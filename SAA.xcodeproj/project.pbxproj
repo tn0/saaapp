@@ -7,9 +7,67 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		954652F7197CF7BF00514F43 /* CheckboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652F6197CF7BF00514F43 /* CheckboxViewController.swift */; };
+		954652F9197CFFC900514F43 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652F8197CFFC900514F43 /* Checkbox.swift */; };
+		954652FB197D005F00514F43 /* CheckBoxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652FA197D005F00514F43 /* CheckBoxState.swift */; };
+		954652FD197D073D00514F43 /* CheckboxDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652FC197D073D00514F43 /* CheckboxDelegate.swift */; };
+		954652FF197D0A9E00514F43 /* SentimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652FE197D0A9E00514F43 /* SentimentViewController.swift */; };
+		95465301197D144100514F43 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 95465300197D144100514F43 /* background.png */; };
+		95465303197D159000514F43 /* GrafikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95465302197D159000514F43 /* GrafikViewController.swift */; };
+		95465305197D4A7800514F43 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95465304197D4A7800514F43 /* Channels.swift */; };
+		95465307197D4AED00514F43 /* Keywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95465306197D4AED00514F43 /* Keywords.swift */; };
+		95465309197D53D800514F43 /* BasicFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95465308197D53D800514F43 /* BasicFilter.swift */; };
+		9546530B197D585900514F43 /* Zeitraum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546530A197D585900514F43 /* Zeitraum.swift */; };
+		95606CA8196BE72B00A08FB1 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95606CA7196BE72B00A08FB1 /* CalendarController.swift */; };
+		95606CAA196BEBFD00A08FB1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95606CA9196BEBFD00A08FB1 /* BaseViewController.swift */; };
+		9563999C197E438000498B37 /* DateUtilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563999B197E438000498B37 /* DateUtilites.swift */; };
+		9563999E197E54E900498B37 /* Roundbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563999D197E54E900498B37 /* Roundbutton.swift */; };
+		956399A0197E557700498B37 /* RoundButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563999F197E557700498B37 /* RoundButtonViewController.swift */; };
+		956399A2197E55BC00498B37 /* RoundButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956399A1197E55BC00498B37 /* RoundButtonDelegate.swift */; };
+		958FDF03197F9EEA00D25E3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 958FDF02197F9EEA00D25E3F /* Settings.bundle */; };
+		958FDF07197FA3D000D25E3F /* SettingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF06197FA3D000D25E3F /* SettingKey.swift */; };
+		958FDF09197FA4EF00D25E3F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF08197FA4EF00D25E3F /* Settings.swift */; };
+		958FDF0B197FB53B00D25E3F /* FilterChangedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF0A197FB53B00D25E3F /* FilterChangedDelegate.swift */; };
+		958FDF0E197FDA4400D25E3F /* BasicNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF0D197FDA4400D25E3F /* BasicNetwork.swift */; };
+		958FDF10197FDB2F00D25E3F /* ChannelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF0F197FDB2F00D25E3F /* ChannelData.swift */; };
+		958FDF12197FDBDF00D25E3F /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF11197FDBDF00D25E3F /* ChannelModel.swift */; };
+		958FDF14197FDCC700D25E3F /* NewDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF13197FDCC700D25E3F /* NewDataDelegate.swift */; };
+		958FDF16197FEFC800D25E3F /* ChannelGraficViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF15197FEFC800D25E3F /* ChannelGraficViewController.swift */; };
+		958FDF18197FF02A00D25E3F /* BaseGraficViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF17197FF02A00D25E3F /* BaseGraficViewController.swift */; };
+		958FDF1A1980012900D25E3F /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF191980012900D25E3F /* BarView.swift */; };
+		958FDF1C198009B300D25E3F /* BarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF1B198009B300D25E3F /* BarViewController.swift */; };
+		958FDF1E1980EAB500D25E3F /* SentimentGrafikViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF1D1980EAB500D25E3F /* SentimentGrafikViewController.swift */; };
+		958FDF201980EC3E00D25E3F /* SentimentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF1F1980EC3E00D25E3F /* SentimentData.swift */; };
+		958FDF221980ED4200D25E3F /* DonatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF211980ED4200D25E3F /* DonatView.swift */; };
+		958FDF2419811FCE00D25E3F /* SentimentGrafikLegendeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF2319811FCE00D25E3F /* SentimentGrafikLegendeViewController.swift */; };
+		958FDF2619812ABA00D25E3F /* KeywordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF2519812ABA00D25E3F /* KeywordsTableViewController.swift */; };
+		958FDF2819812B6700D25E3F /* KeywordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF2719812B6700D25E3F /* KeywordData.swift */; };
+		958FDF2A19824BA800D25E3F /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958FDF2919824BA800D25E3F /* Debug.swift */; };
+		959327E41973FB9A00068748 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959327E31973FB9A00068748 /* LeftViewController.swift */; };
+		959327E61973FBAF00068748 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959327E51973FBAF00068748 /* TopViewController.swift */; };
+		959327E81973FBC400068748 /* BottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959327E71973FBC400068748 /* BottomViewController.swift */; };
+		959327EA1973FEBE00068748 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959327E91973FEBE00068748 /* StatusViewController.swift */; };
+		959327EC1974152D00068748 /* LeftFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959327EB1974152D00068748 /* LeftFilterViewController.swift */; };
 		95A26D2E19542AF6002C35A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A26D2D19542AF6002C35A0 /* AppDelegate.swift */; };
 		95A26D3019542AF6002C35A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95A26D2F19542AF6002C35A0 /* Images.xcassets */; };
 		95A26D3C19542AF6002C35A0 /* SAATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A26D3B19542AF6002C35A0 /* SAATests.swift */; };
+		95A26D4819542D95002C35A0 /* SAAMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A26D4719542D95002C35A0 /* SAAMainController.swift */; };
+		95A26D4B1954303E002C35A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A26D4A1954303E002C35A0 /* Colors.swift */; };
+		95A26D4D19582CAA002C35A0 /* CalloutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A26D4C19582CAA002C35A0 /* CalloutButton.swift */; };
+		95CE3EEA1976C0C2001A8D51 /* CanalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EE91976C0C2001A8D51 /* CanalViewController.swift */; };
+		95CE3EED1976C5D6001A8D51 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EEC1976C5D6001A8D51 /* MenuButton.swift */; };
+		95CE3EEF1977EA7C001A8D51 /* BaseConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EEE1977EA7C001A8D51 /* BaseConfigViewController.swift */; };
+		95CE3EF11977EB29001A8D51 /* ConfigZeitraumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EF01977EB29001A8D51 /* ConfigZeitraumViewController.swift */; };
+		95CE3EF31977EB3E001A8D51 /* ConfigCanalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EF21977EB3E001A8D51 /* ConfigCanalsViewController.swift */; };
+		95CE3EF51977EB53001A8D51 /* ConfigKeywordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EF41977EB53001A8D51 /* ConfigKeywordsViewController.swift */; };
+		95CE3EF71977EC80001A8D51 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EF61977EC80001A8D51 /* CalendarViewController.swift */; };
+		95CE3EF91977EED7001A8D51 /* CalendarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EF81977EED7001A8D51 /* CalendarButton.swift */; };
+		95D1521F197971B4003A737C /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D1521E197971B4003A737C /* CalendarDelegate.swift */; };
+		95EA1EDC1974218100B340BA /* KeywordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EA1EDB1974218100B340BA /* KeywordController.swift */; };
+		95EF484E1976A0B900A04D5F /* FilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF484D1976A0B900A04D5F /* FilterDelegate.swift */; };
+		95EF48511976A14600A04D5F /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF48501976A14600A04D5F /* Filter.swift */; };
+		95EF48531976A1BE00A04D5F /* sentiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF48521976A1BE00A04D5F /* sentiment.swift */; };
+		95EF48551976A85500A04D5F /* ConfigFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF48541976A85500A04D5F /* ConfigFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +81,47 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		954652F6197CF7BF00514F43 /* CheckboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxViewController.swift; sourceTree = "<group>"; };
+		954652F8197CFFC900514F43 /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		954652FA197D005F00514F43 /* CheckBoxState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxState.swift; sourceTree = "<group>"; };
+		954652FC197D073D00514F43 /* CheckboxDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxDelegate.swift; sourceTree = "<group>"; };
+		954652FE197D0A9E00514F43 /* SentimentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentViewController.swift; sourceTree = "<group>"; };
+		95465300197D144100514F43 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		95465302197D159000514F43 /* GrafikViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrafikViewController.swift; sourceTree = "<group>"; };
+		95465304197D4A7800514F43 /* Channels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
+		95465306197D4AED00514F43 /* Keywords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keywords.swift; sourceTree = "<group>"; };
+		95465308197D53D800514F43 /* BasicFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicFilter.swift; sourceTree = "<group>"; };
+		9546530A197D585900514F43 /* Zeitraum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zeitraum.swift; sourceTree = "<group>"; };
+		95606CA7196BE72B00A08FB1 /* CalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
+		95606CA9196BEBFD00A08FB1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		9563999B197E438000498B37 /* DateUtilites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilites.swift; sourceTree = "<group>"; };
+		9563999D197E54E900498B37 /* Roundbutton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roundbutton.swift; sourceTree = "<group>"; };
+		9563999F197E557700498B37 /* RoundButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButtonViewController.swift; sourceTree = "<group>"; };
+		956399A1197E55BC00498B37 /* RoundButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButtonDelegate.swift; sourceTree = "<group>"; };
+		958FDF02197F9EEA00D25E3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		958FDF06197FA3D000D25E3F /* SettingKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingKey.swift; sourceTree = "<group>"; };
+		958FDF08197FA4EF00D25E3F /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		958FDF0A197FB53B00D25E3F /* FilterChangedDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChangedDelegate.swift; sourceTree = "<group>"; };
+		958FDF0D197FDA4400D25E3F /* BasicNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNetwork.swift; sourceTree = "<group>"; };
+		958FDF0F197FDB2F00D25E3F /* ChannelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelData.swift; sourceTree = "<group>"; };
+		958FDF11197FDBDF00D25E3F /* ChannelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
+		958FDF13197FDCC700D25E3F /* NewDataDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataDelegate.swift; sourceTree = "<group>"; };
+		958FDF15197FEFC800D25E3F /* ChannelGraficViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelGraficViewController.swift; sourceTree = "<group>"; };
+		958FDF17197FF02A00D25E3F /* BaseGraficViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGraficViewController.swift; sourceTree = "<group>"; };
+		958FDF191980012900D25E3F /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		958FDF1B198009B300D25E3F /* BarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewController.swift; sourceTree = "<group>"; };
+		958FDF1D1980EAB500D25E3F /* SentimentGrafikViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentGrafikViewController.swift; sourceTree = "<group>"; };
+		958FDF1F1980EC3E00D25E3F /* SentimentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentData.swift; sourceTree = "<group>"; };
+		958FDF211980ED4200D25E3F /* DonatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonatView.swift; sourceTree = "<group>"; };
+		958FDF2319811FCE00D25E3F /* SentimentGrafikLegendeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentimentGrafikLegendeViewController.swift; sourceTree = "<group>"; };
+		958FDF2519812ABA00D25E3F /* KeywordsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordsTableViewController.swift; sourceTree = "<group>"; };
+		958FDF2719812B6700D25E3F /* KeywordData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordData.swift; sourceTree = "<group>"; };
+		958FDF2919824BA800D25E3F /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		959327E31973FB9A00068748 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		959327E51973FBAF00068748 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		959327E71973FBC400068748 /* BottomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomViewController.swift; sourceTree = "<group>"; };
+		959327E91973FEBE00068748 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		959327EB1974152D00068748 /* LeftFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftFilterViewController.swift; sourceTree = "<group>"; };
 		95A26D2819542AF6002C35A0 /* SAA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SAA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A26D2C19542AF6002C35A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95A26D2D19542AF6002C35A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +129,23 @@
 		95A26D3519542AF6002C35A0 /* SAATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SAATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95A26D3A19542AF6002C35A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95A26D3B19542AF6002C35A0 /* SAATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAATests.swift; sourceTree = "<group>"; };
+		95A26D4719542D95002C35A0 /* SAAMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SAAMainController.swift; sourceTree = "<group>"; };
+		95A26D4A1954303E002C35A0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		95A26D4C19582CAA002C35A0 /* CalloutButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalloutButton.swift; sourceTree = "<group>"; };
+		95CE3EE91976C0C2001A8D51 /* CanalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanalViewController.swift; sourceTree = "<group>"; };
+		95CE3EEC1976C5D6001A8D51 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		95CE3EEE1977EA7C001A8D51 /* BaseConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseConfigViewController.swift; sourceTree = "<group>"; };
+		95CE3EF01977EB29001A8D51 /* ConfigZeitraumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigZeitraumViewController.swift; sourceTree = "<group>"; };
+		95CE3EF21977EB3E001A8D51 /* ConfigCanalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigCanalsViewController.swift; sourceTree = "<group>"; };
+		95CE3EF41977EB53001A8D51 /* ConfigKeywordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigKeywordsViewController.swift; sourceTree = "<group>"; };
+		95CE3EF61977EC80001A8D51 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		95CE3EF81977EED7001A8D51 /* CalendarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarButton.swift; sourceTree = "<group>"; };
+		95D1521E197971B4003A737C /* CalendarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
+		95EA1EDB1974218100B340BA /* KeywordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordController.swift; sourceTree = "<group>"; };
+		95EF484D1976A0B900A04D5F /* FilterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDelegate.swift; sourceTree = "<group>"; };
+		95EF48501976A14600A04D5F /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		95EF48521976A1BE00A04D5F /* sentiment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sentiment.swift; sourceTree = "<group>"; };
+		95EF48541976A85500A04D5F /* ConfigFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigFilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +166,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		958FDF01197F9EBF00D25E3F /* Settings.bundle */ = {
+			isa = PBXGroup;
+			children = (
+				958FDF02197F9EEA00D25E3F /* Settings.bundle */,
+			);
+			name = Settings.bundle;
+			sourceTree = "<group>";
+		};
+		958FDF0C197FDA2400D25E3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				958FDF0D197FDA4400D25E3F /* BasicNetwork.swift */,
+				958FDF0F197FDB2F00D25E3F /* ChannelData.swift */,
+				958FDF11197FDBDF00D25E3F /* ChannelModel.swift */,
+				958FDF1F1980EC3E00D25E3F /* SentimentData.swift */,
+				958FDF2719812B6700D25E3F /* KeywordData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		95A26D1F19542AF6002C35A0 = {
 			isa = PBXGroup;
 			children = (
@@ -72,8 +208,16 @@
 			isa = PBXGroup;
 			children = (
 				95A26D2D19542AF6002C35A0 /* AppDelegate.swift */,
+				95465300197D144100514F43 /* background.png */,
+				95A26D4919543013002C35A0 /* Config */,
+				95A26D4519542D28002C35A0 /* Controller */,
+				95EF484F1976A11A00A04D5F /* Data */,
 				95A26D2F19542AF6002C35A0 /* Images.xcassets */,
+				958FDF0C197FDA2400D25E3F /* Model */,
+				95EF484C1976A09E00A04D5F /* Protocol */,
+				958FDF01197F9EBF00D25E3F /* Settings.bundle */,
 				95A26D2B19542AF6002C35A0 /* Supporting Files */,
+				95CE3EEB1976C5B1001A8D51 /* Views */,
 			);
 			path = SAA;
 			sourceTree = "<group>";
@@ -101,6 +245,92 @@
 				95A26D3A19542AF6002C35A0 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95A26D4519542D28002C35A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				958FDF1B198009B300D25E3F /* BarViewController.swift */,
+				95CE3EEE1977EA7C001A8D51 /* BaseConfigViewController.swift */,
+				958FDF17197FF02A00D25E3F /* BaseGraficViewController.swift */,
+				95606CA9196BEBFD00A08FB1 /* BaseViewController.swift */,
+				959327E71973FBC400068748 /* BottomViewController.swift */,
+				95606CA7196BE72B00A08FB1 /* CalendarController.swift */,
+				95CE3EF61977EC80001A8D51 /* CalendarViewController.swift */,
+				95A26D4C19582CAA002C35A0 /* CalloutButton.swift */,
+				95CE3EE91976C0C2001A8D51 /* CanalViewController.swift */,
+				958FDF15197FEFC800D25E3F /* ChannelGraficViewController.swift */,
+				954652F6197CF7BF00514F43 /* CheckboxViewController.swift */,
+				95CE3EF21977EB3E001A8D51 /* ConfigCanalsViewController.swift */,
+				95EF48541976A85500A04D5F /* ConfigFilterViewController.swift */,
+				95CE3EF41977EB53001A8D51 /* ConfigKeywordsViewController.swift */,
+				95CE3EF01977EB29001A8D51 /* ConfigZeitraumViewController.swift */,
+				95465302197D159000514F43 /* GrafikViewController.swift */,
+				95EA1EDB1974218100B340BA /* KeywordController.swift */,
+				959327EB1974152D00068748 /* LeftFilterViewController.swift */,
+				959327E31973FB9A00068748 /* LeftViewController.swift */,
+				9563999F197E557700498B37 /* RoundButtonViewController.swift */,
+				95A26D4719542D95002C35A0 /* SAAMainController.swift */,
+				958FDF1D1980EAB500D25E3F /* SentimentGrafikViewController.swift */,
+				954652FE197D0A9E00514F43 /* SentimentViewController.swift */,
+				959327E91973FEBE00068748 /* StatusViewController.swift */,
+				959327E51973FBAF00068748 /* TopViewController.swift */,
+				958FDF2319811FCE00D25E3F /* SentimentGrafikLegendeViewController.swift */,
+				958FDF2519812ABA00D25E3F /* KeywordsTableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		95A26D4919543013002C35A0 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				95A26D4A1954303E002C35A0 /* Colors.swift */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		95CE3EEB1976C5B1001A8D51 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				95CE3EEC1976C5D6001A8D51 /* MenuButton.swift */,
+				95CE3EF81977EED7001A8D51 /* CalendarButton.swift */,
+				954652F8197CFFC900514F43 /* Checkbox.swift */,
+				9563999D197E54E900498B37 /* Roundbutton.swift */,
+				958FDF191980012900D25E3F /* BarView.swift */,
+				958FDF211980ED4200D25E3F /* DonatView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		95EF484C1976A09E00A04D5F /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				958FDF13197FDCC700D25E3F /* NewDataDelegate.swift */,
+				954652FC197D073D00514F43 /* CheckboxDelegate.swift */,
+				95EF484D1976A0B900A04D5F /* FilterDelegate.swift */,
+				95D1521E197971B4003A737C /* CalendarDelegate.swift */,
+				956399A1197E55BC00498B37 /* RoundButtonDelegate.swift */,
+				958FDF0A197FB53B00D25E3F /* FilterChangedDelegate.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		95EF484F1976A11A00A04D5F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				95EF48501976A14600A04D5F /* Filter.swift */,
+				95EF48521976A1BE00A04D5F /* sentiment.swift */,
+				954652FA197D005F00514F43 /* CheckBoxState.swift */,
+				95465304197D4A7800514F43 /* Channels.swift */,
+				95465306197D4AED00514F43 /* Keywords.swift */,
+				95465308197D53D800514F43 /* BasicFilter.swift */,
+				9546530A197D585900514F43 /* Zeitraum.swift */,
+				9563999B197E438000498B37 /* DateUtilites.swift */,
+				958FDF06197FA3D000D25E3F /* SettingKey.swift */,
+				958FDF08197FA4EF00D25E3F /* Settings.swift */,
+				958FDF2919824BA800D25E3F /* Debug.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +382,7 @@
 				TargetAttributes = {
 					95A26D2719542AF6002C35A0 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = KQVDGRZ45R;
 					};
 					95A26D3419542AF6002C35A0 = {
 						CreatedOnToolsVersion = 6.0;
@@ -183,6 +414,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				95A26D3019542AF6002C35A0 /* Images.xcassets in Resources */,
+				958FDF03197F9EEA00D25E3F /* Settings.bundle in Resources */,
+				95465301197D144100514F43 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +433,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95EF484E1976A0B900A04D5F /* FilterDelegate.swift in Sources */,
+				958FDF221980ED4200D25E3F /* DonatView.swift in Sources */,
 				95A26D2E19542AF6002C35A0 /* AppDelegate.swift in Sources */,
+				95465305197D4A7800514F43 /* Channels.swift in Sources */,
+				958FDF1E1980EAB500D25E3F /* SentimentGrafikViewController.swift in Sources */,
+				958FDF10197FDB2F00D25E3F /* ChannelData.swift in Sources */,
+				95606CAA196BEBFD00A08FB1 /* BaseViewController.swift in Sources */,
+				958FDF2619812ABA00D25E3F /* KeywordsTableViewController.swift in Sources */,
+				958FDF14197FDCC700D25E3F /* NewDataDelegate.swift in Sources */,
+				959327EC1974152D00068748 /* LeftFilterViewController.swift in Sources */,
+				95CE3EF71977EC80001A8D51 /* CalendarViewController.swift in Sources */,
+				958FDF2819812B6700D25E3F /* KeywordData.swift in Sources */,
+				958FDF12197FDBDF00D25E3F /* ChannelModel.swift in Sources */,
+				95A26D4D19582CAA002C35A0 /* CalloutButton.swift in Sources */,
+				95606CA8196BE72B00A08FB1 /* CalendarController.swift in Sources */,
+				959327EA1973FEBE00068748 /* StatusViewController.swift in Sources */,
+				95CE3EEA1976C0C2001A8D51 /* CanalViewController.swift in Sources */,
+				958FDF07197FA3D000D25E3F /* SettingKey.swift in Sources */,
+				95465309197D53D800514F43 /* BasicFilter.swift in Sources */,
+				95EF48511976A14600A04D5F /* Filter.swift in Sources */,
+				958FDF1C198009B300D25E3F /* BarViewController.swift in Sources */,
+				959327E61973FBAF00068748 /* TopViewController.swift in Sources */,
+				95465303197D159000514F43 /* GrafikViewController.swift in Sources */,
+				954652FD197D073D00514F43 /* CheckboxDelegate.swift in Sources */,
+				954652F9197CFFC900514F43 /* Checkbox.swift in Sources */,
+				958FDF0B197FB53B00D25E3F /* FilterChangedDelegate.swift in Sources */,
+				95EF48531976A1BE00A04D5F /* sentiment.swift in Sources */,
+				95CE3EF31977EB3E001A8D51 /* ConfigCanalsViewController.swift in Sources */,
+				958FDF09197FA4EF00D25E3F /* Settings.swift in Sources */,
+				95CE3EF51977EB53001A8D51 /* ConfigKeywordsViewController.swift in Sources */,
+				958FDF0E197FDA4400D25E3F /* BasicNetwork.swift in Sources */,
+				958FDF2419811FCE00D25E3F /* SentimentGrafikLegendeViewController.swift in Sources */,
+				959327E81973FBC400068748 /* BottomViewController.swift in Sources */,
+				95A26D4B1954303E002C35A0 /* Colors.swift in Sources */,
+				958FDF1A1980012900D25E3F /* BarView.swift in Sources */,
+				95D1521F197971B4003A737C /* CalendarDelegate.swift in Sources */,
+				95465307197D4AED00514F43 /* Keywords.swift in Sources */,
+				954652FB197D005F00514F43 /* CheckBoxState.swift in Sources */,
+				958FDF18197FF02A00D25E3F /* BaseGraficViewController.swift in Sources */,
+				95EF48551976A85500A04D5F /* ConfigFilterViewController.swift in Sources */,
+				9563999C197E438000498B37 /* DateUtilites.swift in Sources */,
+				958FDF16197FEFC800D25E3F /* ChannelGraficViewController.swift in Sources */,
+				9563999E197E54E900498B37 /* Roundbutton.swift in Sources */,
+				95CE3EED1976C5D6001A8D51 /* MenuButton.swift in Sources */,
+				956399A2197E55BC00498B37 /* RoundButtonDelegate.swift in Sources */,
+				954652F7197CF7BF00514F43 /* CheckboxViewController.swift in Sources */,
+				958FDF2A19824BA800D25E3F /* Debug.swift in Sources */,
+				95CE3EF11977EB29001A8D51 /* ConfigZeitraumViewController.swift in Sources */,
+				958FDF201980EC3E00D25E3F /* SentimentData.swift in Sources */,
+				954652FF197D0A9E00514F43 /* SentimentViewController.swift in Sources */,
+				9546530B197D585900514F43 /* Zeitraum.swift in Sources */,
+				959327E41973FB9A00068748 /* LeftViewController.swift in Sources */,
+				956399A0197E557700498B37 /* RoundButtonViewController.swift in Sources */,
+				95A26D4819542D95002C35A0 /* SAAMainController.swift in Sources */,
+				95CE3EF91977EED7001A8D51 /* CalendarButton.swift in Sources */,
+				95CE3EEF1977EA7C001A8D51 /* BaseConfigViewController.swift in Sources */,
+				95EA1EDC1974218100B340BA /* KeywordController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +529,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -257,12 +547,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -283,6 +574,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -294,8 +586,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				METAL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -307,7 +600,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SAA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -318,7 +613,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SAA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -379,6 +676,7 @@
 				95A26D4119542AF6002C35A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95A26D4219542AF6002C35A0 /* Build configuration list for PBXNativeTarget "SAATests" */ = {
 			isa = XCConfigurationList;
@@ -387,6 +685,7 @@
 				95A26D4419542AF6002C35A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
