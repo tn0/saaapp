@@ -46,7 +46,7 @@ class ChannelData :BasicNetwork
         order by macht nach Measure mach scheinbar Probleme, wenn kein zusätzlicher Filter angegeben wird
         */
         //super.getData("name,COUNT",addfilter: "",top: "10",orderby: "COUNT desc",service: "CHANNELS")
-        super.getData("name,COUNT",addfilter: "",top: "10",orderby: "",service: "CHANNELS")
+        super.getData("",addfilter: "",top: "10",orderby: "COUNT desc",service: "CHANNELS")
     }
     
     override func refresh()
@@ -67,7 +67,7 @@ class ChannelData :BasicNetwork
                 if(item? != nil)
                 {
                     var name=item!["name"] as String;
-                    var c=item!["COUNT"] as? NSString
+                    var c=item!["COUNT"] as? NSNumber
                     dump(c)
                     
                     if( c? != nil)

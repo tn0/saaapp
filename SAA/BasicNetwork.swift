@@ -42,158 +42,146 @@ class BasicNetwork
     
     func makeURL(select:String,addfilter:String,top:String,orderby:String,service:String) -> String
     {
-        var url=settings.getUrl()!+"/comline/saa/services/app.xsodata/"+service+"?$format=json"
+        Debug.print("Making URL for service \(service)")
+        var url=""
+        if(service == "KEYWORDS" || service == "CHANNELS" || service == "SENTIMENT")
+        {
+            var parameters:String=""
+            var d="domain='"+settings.getDomain()!+"'"
+            var k=""
+            if(!filter.keywords.freetext.isEmpty  && filter.keywords.freetext_used)
+            {
+                k = "keywords='"+filter.keywords.freetext
+            }
+            for keyword in filter.keywords.keywords
+            {
+                
+                if ( keyword.use)
+                {
+                    if(k=="")
+                    {
+                        k = "keywords='"+keyword.desc!
+                    }
+                    else
+                    {
+                        k = k + ","+keyword.desc!
+                    }
+                }
+            }
+            
+            if(k == "")
+            {
+                k="keywords='*'"
+            }
+            else
+            {
+                k=k+"'"
+            }
+            
+            
+            
+            //filter zeitraum
+            var date_from="from_date=datetime'"+filter.zeitraum.dbbegin+"'"
+            var date_to="to_date=datetime'"+filter.zeitraum.dbend+"'"
+            
+            var date_use=""
+            if(filter.zeitraum.useFilter)
+            {
+                date_use="use_date=1"
+            }
+            else
+            {
+                date_use="use_date=0"
+            }
+            
+            //filter channels
+            var c=""
+            for channel in filter.channels.channels
+            {
+                
+                if ( channel.use)
+                {
+                    if(c=="")
+                    {
+                        c="channels='"+channel.desc!
+                    }
+                    else
+                    {
+                        c=c+","+channel.desc!
+                    }
+                    
+                }
+            }
+            if(c == "")
+            {
+                c="channels='*'"
+            }
+            else
+            {
+                c=c+"'"
+            }
+            
+           
+            
+            
+            
+            //filter sentiment
+            
+           
+            var spos="";
+            var sneg="";
+            var sneu="";
+            if ( filter.sentiment.positive)
+            {
+                spos="positive=1"
+            }
+            else
+            {
+                spos="positive=0"
+            }
+            
+            if ( filter.sentiment.negative)
+            {
+                sneg="negative=1"
+            }
+            else
+            {
+                sneg="negative=0"
+            }
+            
+            if ( filter.sentiment.neutral)
+            {
+                sneu="neutral=1"
+            }
+            else
+            {
+                sneu="neutral=0"
+            }
+            
+           parameters="Parameters("+d+","+k+","+c+","+date_from+","+date_to+","+spos+","+sneg+","+sneu+","+date_use+")"
+            url=settings.getUrl()!+"/comline/saa/services/app.xsodata/"+service+parameters.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!+"/Results?$format=json"
+        }
+        else
+        {
+           url=settings.getUrl()!+"/comline/saa/services/app.xsodata/"+service+"?$format=json"
+        }
+       
         
         //select
-        var s:String="&$select="+select.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
-        
-        
-        //filter zeitraum
-        var w="";
-        if(filter.zeitraum.useFilter)
+        var s=""
+        if(select != "")
         {
-            
-            w="(timestamp ge datetime'"+filter.zeitraum.dbbegin+"' and timestamp le datetime'"+filter.zeitraum.dbend+"')"
-        }
-        
-        //filter channels
-        var c=""
-        for channel in filter.channels.channels
-        {
-            
-            if ( channel.use)
-            {
-                if(c=="")
-                {
-                    c="( sn_id eq '"+channel.desc!+"'"
-                }
-                else
-                {
-                    c=c+" or sn_id eq '"+channel.desc!+"'"
-                }
-                
-            }
-        }
-        if(c != "")
-        {
-            c=c + ")"
-            if( w == "")
-            {
-                w=c
-            }
-            else
-            {
-                w=w+" and "+c
-            }
-        }
-        
-        //filter keywords
-        
-        var k=""
-        
-        for keyword in filter.keywords.keywords
-        {
-                
-            if ( keyword.use)
-            {
-                if(k=="")
-                {
-                    k = "("+keyword.desc! + " gt 0 "
-                }
-                else
-                {
-                    k = k + " or " + keyword.desc! + " gt 0 "
-                }
-            }
-        }
-        
-        if(k != "")
-        {
-            k=k + ")"
-        
-        
-            if( w == "")
-            {
-                w=k
-            }
-            else
-            {
-                w=w+" and "+k
-            }
-        }
-        
-        //filter sentiment
-        
-        var se=""
-        
-        if ( filter.sentiment.positive)
-        {
-            if(se=="")
-            {
-                se = "(TA_TYPE eq 'WeakPositiveSentiment' or TA_TYPE eq 'StrongPositiveSentiment'"
-            }
-            else
-            {
-                se = se + " or TA_TYPE eq 'WeakPositiveSentiment' or TA_TYPE eq 'StrongPositiveSentiment'"
-            }
-        }
-        
-        if ( filter.sentiment.negative)
-        {
-            if(se=="")
-            {
-                se = "(TA_TYPE eq 'WeakNegativeSentiment' or TA_TYPE eq 'StrongNegativeSentiment'"
-            }
-            else
-            {
-                se = se + " or TA_TYPE eq 'WeakNegativeSentiment' or TA_TYPE eq 'StrongNegativeSentiment'"
-            }
-        }
-        
-        if ( filter.sentiment.neutral)
-        {
-            if(se=="")
-            {
-                se = "(TA_TYPE eq 'NeutralSentiment'"
-            }
-            else
-            {
-                se = se + " or TA_TYPE eq 'NeutralSentiment' "
-            }
-        }
-        if(se != "")
-        {
-            se=se + ")"
-            
-            
-            if( w == "")
-            {
-                w=se
-            }
-            else
-            {
-                w=w+" and "+se
-            }
+            s="&$select="+select.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
         }
         
         
-        //additional filters
-        if(addfilter != "")
-        {
-            if(w=="")
-            {
-                w="("+addfilter+")"
-            }
-            else
-            {
-                w=w+" and ( "+addfilter+" )"
-            }
-        }
+        
+        var w:String="";
         
         //build filter
-        if(w != "")
+        if(addfilter != "")
         {
-            w="&$filter="+w.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+            w="&$filter="+addfilter.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
         }
         
         
@@ -233,6 +221,25 @@ class BasicNetwork
         if(response? != nil)
         {
             Debug.print("taskComplete::request "+response!.debugDescription)
+            var httpresponse = response as? NSHTTPURLResponse
+            
+            if(httpresponse != nil)
+            {
+                if (httpresponse!.statusCode > 400 )
+                {
+                    if(delegate? == nil)
+                    {
+                        fatalError("Fehler Response Code ")
+                    }
+                    else
+                    {
+                        Debug.print("Fehler Response Code \(httpresponse!.statusCode)")
+                        delegate?.errorByLoading(self, msg: "\(error!.localizedDescription)")
+                    }
+                    return
+                }
+            }
+            
         }
         if(error? != nil)
         {
@@ -243,7 +250,12 @@ class BasicNetwork
             }
             else
             {
-                delegate?.errorByLoading(self, msg: "\(error!.localizedDescription)")
+                Debug.print("task \(task?.state.toRaw())  canceling \(NSURLSessionTaskState.Canceling.toRaw()))  error \(error!.code)")
+                if( error!.code != -999 )
+                {
+                
+                  delegate?.errorByLoading(self, msg: "\(error!.localizedDescription)")
+                }
             }
             return
         }
@@ -320,6 +332,7 @@ class BasicNetwork
         delegate?.dataLoaded(self)
     }
     
+    var task:NSURLSessionDataTask?
     func getData(select:String,addfilter:String,top:String,orderby:String,service:String)
     {
         Debug.print("getData select \(select) addfilter \(addfilter) top \(top) orderby \(orderby) service \(service)")
@@ -333,7 +346,11 @@ class BasicNetwork
         let authString = "Basic \(base64EncodedCredential)"
         sessionConfiguration.HTTPAdditionalHeaders = ["Authorization" : authString]
         let session = NSURLSession(configuration: sessionConfiguration)
-        let task = session.dataTaskWithURL(jsonURL, completionHandler: taskComplete )
+        if(task? != nil && ( task?.state == NSURLSessionTaskState.Running || task?.state == NSURLSessionTaskState.Suspended) )
+        {
+            task!.cancel()
+        }
+        task = session.dataTaskWithURL(jsonURL, completionHandler: taskComplete )
         
         
        // objc_sync_enter(connections)
@@ -344,7 +361,7 @@ class BasicNetwork
         }
         //objc_sync_exit(connections)
         
-        task.resume()
+        task!.resume()
     }
     
 

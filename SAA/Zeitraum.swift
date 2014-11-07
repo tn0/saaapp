@@ -33,6 +33,8 @@ class Zeitraum
         delegate?.filterChanged()
     }
     }
+    
+    var _index:Int=0
     var _useFilter:Bool
     var useFilter:Bool
     {
@@ -65,6 +67,7 @@ class Zeitraum
         _begin=NSDate()
         _end=NSDate()
         formatter=NSDateFormatter()
+        //formatter.locale=NSLocale.currentLocale()
         formatter.dateFormat="yyyy-MM-dd "
         _useFilter=false
         

@@ -11,9 +11,15 @@ import UIKit
 class ConfigKeywordsViewController: BaseConfigViewController , CheckboxDelegate{
     
     var keywords:UIView
+    var freetext:CheckInputController
+    
     override init(_filter: Filter)  {
+       // freetext=UITextField()
+       // freetext.backgroundColor=UIColor.whiteColor()
+       // freetext.setTranslatesAutoresizingMaskIntoConstraints(false)
         keywords=UIView();
         keywords.setTranslatesAutoresizingMaskIntoConstraints(false)
+        freetext=CheckInputController(filter: _filter)
         super.init(_filter: _filter)
         
         // Do any additional setup after loading the view.
@@ -41,16 +47,26 @@ class ConfigKeywordsViewController: BaseConfigViewController , CheckboxDelegate{
                 }
             }
         }
-        showKeywords()
+       // showKeywords()
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        //addChild(freetext)
         view.addSubview(keywords)
         
-        setConstraints()
+        
+        //keywords.backgroundColor=UIColor.yellowColor()
         showKeywords()
+        setConstraints()
+        //freetext.text=filter.keywords.freetext
+        //freetext.addTarget(self,action: "textFieldChanged:", forControlEvents: UIControlEvents.EditingChanged)
+    }
+    
+    func textFieldChanged(field:UITextField)
+    {
+        filter.keywords.freetext=field.text
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,6 +76,7 @@ class ConfigKeywordsViewController: BaseConfigViewController , CheckboxDelegate{
     func showKeywords()
     {
         removeAllChilds()
+        addChild(freetext)
         var constraints=keywords.constraints()
         keywords.removeConstraints(constraints)
         var i=0
@@ -107,9 +124,12 @@ class ConfigKeywordsViewController: BaseConfigViewController , CheckboxDelegate{
         
         Debug.print("setConstraints in KeywordsController")
         var constraints = [
+            NSLayoutConstraint(item:freetext.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
+            NSLayoutConstraint(item:freetext.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
+            NSLayoutConstraint(item:freetext.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
+            NSLayoutConstraint(item:freetext.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 40),
             
-            
-            NSLayoutConstraint(item:keywords,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
+            NSLayoutConstraint(item:keywords,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: freetext.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 10),
             NSLayoutConstraint(item:keywords,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:keywords,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:keywords,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
@@ -118,7 +138,8 @@ class ConfigKeywordsViewController: BaseConfigViewController , CheckboxDelegate{
         view.addConstraints(constraints)
         
     }
-}
+    
+    }
 
 
 

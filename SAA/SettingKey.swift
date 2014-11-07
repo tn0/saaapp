@@ -13,5 +13,6 @@ enum SettingKey:String
     case LOGIN="login"
     case PASSWORD="password"
     case DOMAIN="domaine"
+    case CUSTOMER="customer"
     
 }

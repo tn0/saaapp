@@ -30,6 +30,10 @@ class Settings
         return getStringfromKey(SettingKey.DOMAIN.toRaw())
     }
     
+    func getCustomer()->String?
+    {
+        return getStringfromKey(SettingKey.CUSTOMER.toRaw())
+    }
     func loadDefault()
     {
         var bundle=NSBundle.mainBundle()

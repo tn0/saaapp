@@ -18,7 +18,7 @@ class CalloutButton: BaseViewController {
             label.text=value
         }
         get {
-            return label.text
+            return label.text!
         }
     }
 

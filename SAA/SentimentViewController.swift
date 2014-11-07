@@ -118,6 +118,7 @@ class SentimentViewController: BaseViewController, CheckboxDelegate {
         addChild(negative)
         addChild(neutral)
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        //view.backgroundColor=UIColor.yellowColor()
         positive.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         negative.view.setTranslatesAutoresizingMaskIntoConstraints(false)
         neutral.view.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -142,17 +143,17 @@ class SentimentViewController: BaseViewController, CheckboxDelegate {
         
         
         NSLayoutConstraint(item:positive.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-    NSLayoutConstraint(item:positive.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/6.0,constant: 0),
+    NSLayoutConstraint(item:positive.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: 0),
     
     NSLayoutConstraint(item: negative.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
     NSLayoutConstraint(item: negative.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: positive.view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
         NSLayoutConstraint(item:negative.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-        NSLayoutConstraint(item:negative.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/6.0,constant: 0),
+        NSLayoutConstraint(item:negative.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: 0),
     
     NSLayoutConstraint(item: neutral.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
         NSLayoutConstraint(item: neutral.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: negative.view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
         NSLayoutConstraint(item:neutral.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-        NSLayoutConstraint(item:neutral.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/6.0,constant: 0),
+        NSLayoutConstraint(item:neutral.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: 0),
     
     
     ]

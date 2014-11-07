@@ -52,6 +52,22 @@ class KeywordController: LeftFilterViewController {
         var i=0
         var constr1:NSLayoutConstraint;
         var oldLabel:UILabel?
+        if(filter.keywords.freetext != "")
+        {
+            var label=UILabel()
+            label.setTranslatesAutoresizingMaskIntoConstraints(false)
+            label.text=filter.keywords.freetext
+            label.textColor=Colors.zeitraumLabelTextColor
+            keywords.addSubview(label)
+            
+            constr1=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: keywords,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0)
+            
+            var constr2=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: keywords,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0)
+            keywords.addConstraint(constr1)
+            keywords.addConstraint(constr2)
+            oldLabel=label;
+            i++
+        }
         for c in filter.keywords.keywords
         {
             if(c.use)

@@ -22,11 +22,7 @@ class SentimentData :BasicNetwork
     
     override func getData()
     {
-        
-        positive=Int64(arc4random())
-        negative=Int64(arc4random())
-        neutral=Int64(arc4random())
-        super.getData("TA_TYPE,COUNT",addfilter: "TA_TYPE eq 'StrongPositiveSentiment' or TA_TYPE eq 'WeakPositiveSentiment' or TA_TYPE eq 'NeutralSentiment' or TA_TYPE eq 'WeakNegativeSentiment' or TA_TYPE eq 'StrongNegativeSentiment'",top: "",orderby: "",service: "SENTIMENT")
+        super.getData("",addfilter: "",top: "",orderby: "",service: "SENTIMENT")
     }
     
     override func refresh()
@@ -51,7 +47,7 @@ class SentimentData :BasicNetwork
                 {
                     
                     var type=item!["TA_TYPE"] as String;
-                    var c=item!["COUNT"] as? NSString
+                    var c=item!["COUNT"] as? NSNumber
                     
                     
                     if( c? != nil)
@@ -76,7 +72,7 @@ class SentimentData :BasicNetwork
 
                 }
             }
-            Debug.print("ChannelData::refresh::data = \(data)")
+            Debug.print("SentimentData::refresh::positive = \(positive) negative \(negative) neutral \(neutral)")
         }
         
     }

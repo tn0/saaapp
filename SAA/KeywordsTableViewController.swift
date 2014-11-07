@@ -11,7 +11,7 @@ import UIKit
 class KeywordTableViewController: BaseGraficViewController,NewDataDelegate {
     
     var label:UILabel
-    
+    var content:UIView
     
     var keywords=[
     UILabel(),
@@ -27,7 +27,8 @@ class KeywordTableViewController: BaseGraficViewController,NewDataDelegate {
         label=UILabel()
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        
+        content=UIView()
+        content.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         super.init()
         dataSource=KeywordData(filter:filter)
@@ -51,14 +52,14 @@ class KeywordTableViewController: BaseGraficViewController,NewDataDelegate {
             label.textAlignment=NSTextAlignment.Right
             label.textColor=Colors.channelGraficBarColor
                 label.text=""
-            view.addSubview(label)
+            content.addSubview(label)
             var constraints:Array<NSLayoutConstraint>
             if(i==0)
             {
                 constraints = [
-                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: self.label,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 30),
-                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 8),
-                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10),
+                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 10),
+                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 8),
+                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10),
                     //NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -20),
                 ]
                
@@ -68,12 +69,12 @@ class KeywordTableViewController: BaseGraficViewController,NewDataDelegate {
                 
                 constraints = [
                     NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: old!,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 20),
-                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 8),
-                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10),
+                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 8),
+                    NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10),
                     //NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -20),
                 ]
             }
-             view.addConstraints(constraints)
+             content.addConstraints(constraints)
             old=label
             i++
         }
@@ -86,7 +87,10 @@ class KeywordTableViewController: BaseGraficViewController,NewDataDelegate {
         label.textColor=Colors.leftMenuInactiveTextColor
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(label)
-    
+        view.addSubview(content)
+        content.layer.borderColor=Colors.grafikBorderColor.CGColor
+        content.layer.borderWidth=1
+        content.layer.cornerRadius=5
         setConstraints()
         setUpKeywords()
     }
@@ -114,7 +118,7 @@ class KeywordTableViewController: BaseGraficViewController,NewDataDelegate {
         {
             if( i < l)
             {
-            label.text=source.data![i] as String
+            label.text=source.data![i] as? String
             }
             else
             {
@@ -141,6 +145,10 @@ class KeywordTableViewController: BaseGraficViewController,NewDataDelegate {
             NSLayoutConstraint(item: label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 10),
             
             
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: label,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 23),
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 2),
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -3),
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -18),
             
             
             

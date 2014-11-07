@@ -10,10 +10,23 @@ import UIKit
 
 class Channels:FilterChangedDelegate {
     var delegate:FilterChangedDelegate?
-    var channels=[
-        BasicFilter(name: "Twitter",desc: "TW"),
-        BasicFilter(name:"CC Community",desc: "CC"),
-    ]
+    
+    var _channels:[BasicFilter]=[]
+    var channels:[BasicFilter]
+        {
+        get{
+            return _channels
+        }
+        set {
+            _channels=newValue
+            for i in _channels
+            {
+                i.delegate=self
+            }
+            delegate?.filterChanged()
+        }
+    }
+    
    
     init()
     {

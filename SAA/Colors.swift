@@ -61,6 +61,18 @@ struct Colors {
     static var sentimentPositiveGrafikColor=Colors.rgbToUiColor(0x81ac64, alpha: 1)
     static var sentimentNegativeGrafikColor=Colors.rgbToUiColor(0xc95756, alpha: 1)
     static var sentimentNeutralGrafikColor=Colors.rgbToUiColor(0xe6e6e6, alpha: 1)
+    static var sentimentBorderColor=Colors.rgbToUiColor(0xcbcbcb, alpha: 1)
+    
+    
+    static var grafikBorderColor=Colors.rgbToUiColor(0xcbcbcb, alpha: 1)
+    static var grafikIndicatorColor=Colors.rgbToUiColor(0xd86024, alpha: 1)
+    
+    static var topButtonSelectedBackgroundColor=Colors.rgbToUiColor(0x779ab8, alpha: 1)
+    static var topButtonBackgroundColor=Colors.rgbToUiColor(0x779ab8, alpha: 1)
+    static var topButtonDisabeledTitleColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
+    static var topButtonSelectedTitleColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
+    static var topButtonTitleColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
+    static var topButtonDisabeledBackgroundColor=Colors.rgbToUiColor(0xe6e6e6, alpha: 1)
     
     static func rgbToUiColor(rgb:Int,alpha:Float) -> UIColor {
         let r = Float( rgb >> 16 & 0xFF )/255.0;

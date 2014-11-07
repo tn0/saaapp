@@ -129,9 +129,12 @@ class CalendarViewController: BaseViewController {
     {
         
         monthFormatter=NSDateFormatter()
+        monthFormatter.locale=NSLocale.currentLocale()
         monthFormatter.dateFormat="MMMM"
         yearFormatter=NSDateFormatter()
+      //  yearFormatter.locale=NSLocale.currentLocale()
         yearFormatter.dateFormat="yyyy"
+        
         _calendar=NSCalendar(calendarIdentifier: NSGregorianCalendar)
         back=UIButton()
         back.setTitle("<", forState: UIControlState.Normal)

@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class SAAMainController: UINavigationController,FilterChangedDelegate{
+class SAAMainController: UINavigationController,FilterChangedDelegate,ShowDetailsDelegate{
 
     var filter:Filter
     var left:LeftViewController;
@@ -25,6 +25,7 @@ class SAAMainController: UINavigationController,FilterChangedDelegate{
         top=TopViewController(filter:filter);
         
         grafik=GrafikViewController(filter:filter)
+        
         bottom=BottomViewController()
         backgroundImage=UIImageView()
         backgroundImage.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -40,14 +41,43 @@ class SAAMainController: UINavigationController,FilterChangedDelegate{
         fatalError("init(coder:) has not been implemented")
     }
 
+    func showDetails(page: Int) {
+        switch page
+        {
+        case 0:
+            backgroundImage.image=UIImage(named: "background.png");
+            top.overviewButton.enabled=false;
+            grafik.channelIndicator.selected=false
+            grafik.sentimentIndicator.selected=false
+            grafik.keywordsIndicator.selected=false
+        case 1:
+            backgroundImage.image=UIImage(named: "channels.png");
+            top.overviewButton.enabled=true;
+        case 2:
+            backgroundImage.image=UIImage(named: "sentiment.png");
+            top.overviewButton.enabled=true;
+        case 3:
+            backgroundImage.image=UIImage(named: "keywords.png");
+            top.overviewButton.enabled=true;
+        default:
+            Debug.print("unkown page")
+        }
+        
+    }
     func filterChanged()
     {
         grafik.getData()
     }
+    
+    func getData()
+    {
+        grafik.getData()
+        filter.getData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        top.delegate=self
+        grafik.delegate=self
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         Debug.print("MainController \(view.translatesAutoresizingMaskIntoConstraints()) \(view.frame)")
@@ -116,9 +146,9 @@ class SAAMainController: UINavigationController,FilterChangedDelegate{
             
             NSLayoutConstraint(item: grafik.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: top.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 15),
            // NSLayoutConstraint(item: grafik.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: left.view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 15),
-             NSLayoutConstraint(item: grafik.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 0.25,constant: 17),
+             NSLayoutConstraint(item: grafik.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 260),
             NSLayoutConstraint(item: grafik.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -15),
-            NSLayoutConstraint(item: grafik.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant:300 ),
+            NSLayoutConstraint(item: grafik.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant:307 ),
             
             
           /*

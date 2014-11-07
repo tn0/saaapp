@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9520510819B5A82A00FF2757 /* GrafikIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520510719B5A82A00FF2757 /* GrafikIndicator.swift */; };
+		9520510A19B5B54400FF2757 /* ShowDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520510919B5B54400FF2757 /* ShowDetailsDelegate.swift */; };
+		9520510C19B62DB500FF2757 /* TopButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520510B19B62DB500FF2757 /* TopButton.swift */; };
 		954652F7197CF7BF00514F43 /* CheckboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652F6197CF7BF00514F43 /* CheckboxViewController.swift */; };
 		954652F9197CFFC900514F43 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652F8197CFFC900514F43 /* Checkbox.swift */; };
 		954652FB197D005F00514F43 /* CheckBoxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954652FA197D005F00514F43 /* CheckBoxState.swift */; };
@@ -18,6 +21,7 @@
 		95465307197D4AED00514F43 /* Keywords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95465306197D4AED00514F43 /* Keywords.swift */; };
 		95465309197D53D800514F43 /* BasicFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95465308197D53D800514F43 /* BasicFilter.swift */; };
 		9546530B197D585900514F43 /* Zeitraum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546530A197D585900514F43 /* Zeitraum.swift */; };
+		954BEA9119BA0970001058E9 /* KeywordFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954BEA9019BA0970001058E9 /* KeywordFilter.swift */; };
 		95606CA8196BE72B00A08FB1 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95606CA7196BE72B00A08FB1 /* CalendarController.swift */; };
 		95606CAA196BEBFD00A08FB1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95606CA9196BEBFD00A08FB1 /* BaseViewController.swift */; };
 		9563999C197E438000498B37 /* DateUtilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9563999B197E438000498B37 /* DateUtilites.swift */; };
@@ -63,6 +67,9 @@
 		95CE3EF71977EC80001A8D51 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EF61977EC80001A8D51 /* CalendarViewController.swift */; };
 		95CE3EF91977EED7001A8D51 /* CalendarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CE3EF81977EED7001A8D51 /* CalendarButton.swift */; };
 		95D1521F197971B4003A737C /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D1521E197971B4003A737C /* CalendarDelegate.swift */; };
+		95D8AF3319CC705D0016C4D8 /* ErrorLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8AF3219CC705D0016C4D8 /* ErrorLock.swift */; };
+		95DE323219C83E6900783683 /* CheckInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE323119C83E6900783683 /* CheckInputController.swift */; };
+		95DE323419C9B3E300783683 /* ChannelFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DE323319C9B3E300783683 /* ChannelFilter.swift */; };
 		95EA1EDC1974218100B340BA /* KeywordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EA1EDB1974218100B340BA /* KeywordController.swift */; };
 		95EF484E1976A0B900A04D5F /* FilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF484D1976A0B900A04D5F /* FilterDelegate.swift */; };
 		95EF48511976A14600A04D5F /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EF48501976A14600A04D5F /* Filter.swift */; };
@@ -81,6 +88,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9520510719B5A82A00FF2757 /* GrafikIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrafikIndicator.swift; sourceTree = "<group>"; };
+		9520510919B5B54400FF2757 /* ShowDetailsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailsDelegate.swift; sourceTree = "<group>"; };
+		9520510B19B62DB500FF2757 /* TopButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopButton.swift; sourceTree = "<group>"; };
 		954652F6197CF7BF00514F43 /* CheckboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxViewController.swift; sourceTree = "<group>"; };
 		954652F8197CFFC900514F43 /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		954652FA197D005F00514F43 /* CheckBoxState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxState.swift; sourceTree = "<group>"; };
@@ -92,6 +102,7 @@
 		95465306197D4AED00514F43 /* Keywords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keywords.swift; sourceTree = "<group>"; };
 		95465308197D53D800514F43 /* BasicFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicFilter.swift; sourceTree = "<group>"; };
 		9546530A197D585900514F43 /* Zeitraum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zeitraum.swift; sourceTree = "<group>"; };
+		954BEA9019BA0970001058E9 /* KeywordFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordFilter.swift; sourceTree = "<group>"; };
 		95606CA7196BE72B00A08FB1 /* CalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		95606CA9196BEBFD00A08FB1 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		9563999B197E438000498B37 /* DateUtilites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilites.swift; sourceTree = "<group>"; };
@@ -141,6 +152,9 @@
 		95CE3EF61977EC80001A8D51 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		95CE3EF81977EED7001A8D51 /* CalendarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarButton.swift; sourceTree = "<group>"; };
 		95D1521E197971B4003A737C /* CalendarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
+		95D8AF3219CC705D0016C4D8 /* ErrorLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorLock.swift; sourceTree = "<group>"; };
+		95DE323119C83E6900783683 /* CheckInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInputController.swift; sourceTree = "<group>"; };
+		95DE323319C9B3E300783683 /* ChannelFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelFilter.swift; sourceTree = "<group>"; };
 		95EA1EDB1974218100B340BA /* KeywordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeywordController.swift; sourceTree = "<group>"; };
 		95EF484D1976A0B900A04D5F /* FilterDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDelegate.swift; sourceTree = "<group>"; };
 		95EF48501976A14600A04D5F /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
@@ -182,6 +196,8 @@
 				958FDF11197FDBDF00D25E3F /* ChannelModel.swift */,
 				958FDF1F1980EC3E00D25E3F /* SentimentData.swift */,
 				958FDF2719812B6700D25E3F /* KeywordData.swift */,
+				954BEA9019BA0970001058E9 /* KeywordFilter.swift */,
+				95DE323319C9B3E300783683 /* ChannelFilter.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -207,6 +223,7 @@
 		95A26D2A19542AF6002C35A0 /* SAA */ = {
 			isa = PBXGroup;
 			children = (
+				95D8AF3119CC70360016C4D8 /* Utilities */,
 				95A26D2D19542AF6002C35A0 /* AppDelegate.swift */,
 				95465300197D144100514F43 /* background.png */,
 				95A26D4919543013002C35A0 /* Config */,
@@ -277,6 +294,7 @@
 				959327E51973FBAF00068748 /* TopViewController.swift */,
 				958FDF2319811FCE00D25E3F /* SentimentGrafikLegendeViewController.swift */,
 				958FDF2519812ABA00D25E3F /* KeywordsTableViewController.swift */,
+				95DE323119C83E6900783683 /* CheckInputController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -298,8 +316,18 @@
 				9563999D197E54E900498B37 /* Roundbutton.swift */,
 				958FDF191980012900D25E3F /* BarView.swift */,
 				958FDF211980ED4200D25E3F /* DonatView.swift */,
+				9520510719B5A82A00FF2757 /* GrafikIndicator.swift */,
+				9520510B19B62DB500FF2757 /* TopButton.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		95D8AF3119CC70360016C4D8 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				95D8AF3219CC705D0016C4D8 /* ErrorLock.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		95EF484C1976A09E00A04D5F /* Protocol */ = {
@@ -311,6 +339,7 @@
 				95D1521E197971B4003A737C /* CalendarDelegate.swift */,
 				956399A1197E55BC00498B37 /* RoundButtonDelegate.swift */,
 				958FDF0A197FB53B00D25E3F /* FilterChangedDelegate.swift */,
+				9520510919B5B54400FF2757 /* ShowDetailsDelegate.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -436,6 +465,7 @@
 				95EF484E1976A0B900A04D5F /* FilterDelegate.swift in Sources */,
 				958FDF221980ED4200D25E3F /* DonatView.swift in Sources */,
 				95A26D2E19542AF6002C35A0 /* AppDelegate.swift in Sources */,
+				954BEA9119BA0970001058E9 /* KeywordFilter.swift in Sources */,
 				95465305197D4A7800514F43 /* Channels.swift in Sources */,
 				958FDF1E1980EAB500D25E3F /* SentimentGrafikViewController.swift in Sources */,
 				958FDF10197FDB2F00D25E3F /* ChannelData.swift in Sources */,
@@ -458,6 +488,7 @@
 				95465303197D159000514F43 /* GrafikViewController.swift in Sources */,
 				954652FD197D073D00514F43 /* CheckboxDelegate.swift in Sources */,
 				954652F9197CFFC900514F43 /* Checkbox.swift in Sources */,
+				9520510819B5A82A00FF2757 /* GrafikIndicator.swift in Sources */,
 				958FDF0B197FB53B00D25E3F /* FilterChangedDelegate.swift in Sources */,
 				95EF48531976A1BE00A04D5F /* sentiment.swift in Sources */,
 				95CE3EF31977EB3E001A8D51 /* ConfigCanalsViewController.swift in Sources */,
@@ -466,6 +497,7 @@
 				958FDF0E197FDA4400D25E3F /* BasicNetwork.swift in Sources */,
 				958FDF2419811FCE00D25E3F /* SentimentGrafikLegendeViewController.swift in Sources */,
 				959327E81973FBC400068748 /* BottomViewController.swift in Sources */,
+				9520510A19B5B54400FF2757 /* ShowDetailsDelegate.swift in Sources */,
 				95A26D4B1954303E002C35A0 /* Colors.swift in Sources */,
 				958FDF1A1980012900D25E3F /* BarView.swift in Sources */,
 				95D1521F197971B4003A737C /* CalendarDelegate.swift in Sources */,
@@ -473,6 +505,7 @@
 				954652FB197D005F00514F43 /* CheckBoxState.swift in Sources */,
 				958FDF18197FF02A00D25E3F /* BaseGraficViewController.swift in Sources */,
 				95EF48551976A85500A04D5F /* ConfigFilterViewController.swift in Sources */,
+				95DE323219C83E6900783683 /* CheckInputController.swift in Sources */,
 				9563999C197E438000498B37 /* DateUtilites.swift in Sources */,
 				958FDF16197FEFC800D25E3F /* ChannelGraficViewController.swift in Sources */,
 				9563999E197E54E900498B37 /* Roundbutton.swift in Sources */,
@@ -484,10 +517,13 @@
 				958FDF201980EC3E00D25E3F /* SentimentData.swift in Sources */,
 				954652FF197D0A9E00514F43 /* SentimentViewController.swift in Sources */,
 				9546530B197D585900514F43 /* Zeitraum.swift in Sources */,
+				9520510C19B62DB500FF2757 /* TopButton.swift in Sources */,
 				959327E41973FB9A00068748 /* LeftViewController.swift in Sources */,
 				956399A0197E557700498B37 /* RoundButtonViewController.swift in Sources */,
 				95A26D4819542D95002C35A0 /* SAAMainController.swift in Sources */,
 				95CE3EF91977EED7001A8D51 /* CalendarButton.swift in Sources */,
+				95DE323419C9B3E300783683 /* ChannelFilter.swift in Sources */,
+				95D8AF3319CC705D0016C4D8 /* ErrorLock.swift in Sources */,
 				95CE3EEF1977EA7C001A8D51 /* BaseConfigViewController.swift in Sources */,
 				95EA1EDC1974218100B340BA /* KeywordController.swift in Sources */,
 			);

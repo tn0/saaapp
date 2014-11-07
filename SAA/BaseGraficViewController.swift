@@ -30,14 +30,18 @@ class BaseGraficViewController: BaseViewController, NewDataDelegate {
         
         Debug.print("\(self) Netzwerkfehler "+msg)
         NSOperationQueue.mainQueue().addOperationWithBlock {
-            
-            self.showAlert(msg)
+            if(!Errorlock.showError)
+            {
+                self.showAlert(msg)
+            }
         }
         
         
     }
+    
     var errorAlert: UIAlertView?
     func showAlert(msg:String){
+        Errorlock.showError=true
         Debug.print("errorAlert \(errorAlert?.debugDescription)")
         if(errorAlert? == nil)
         {
@@ -58,6 +62,7 @@ class BaseGraficViewController: BaseViewController, NewDataDelegate {
     
     func alertView(View: UIAlertView!, clickedButtonAtIndex buttonIndex: Int){
         errorAlert=nil
+        Errorlock.showError=false
         Debug.print("del errorAlert \(errorAlert?.debugDescription)")
         switch buttonIndex{
             

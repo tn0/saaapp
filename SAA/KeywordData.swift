@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class KeywordData: BasicNetwork {
     
@@ -21,7 +22,7 @@ class KeywordData: BasicNetwork {
     {
         
        
-        super.getData("TA_TOKEN,COUNT",addfilter:"txtlen ge 3 and txtlen le 20",top:"5",orderby: "COUNT desc",service: "KEYWORDS")
+        super.getData("",addfilter:"",top:"5",orderby: "COUNT desc",service: "KEYWORDS")
     }
     
     override func refresh()
@@ -42,12 +43,13 @@ class KeywordData: BasicNetwork {
                 if(item? != nil)
                 {
                     var name=item!["TA_TOKEN"] as String;
-                    var c=item!["COUNT"] as? NSString
+                    var c=item!["COUNT"] as? NSNumber
                     dump(c)
                     
                     if( c? != nil)
                     {
-                        var count:Int64 = c!.longLongValue//NSNumber(c).longLongValue
+                        
+                        var count:Int64 = c!.longLongValue
                         Debug.print("Name :"+name+" count \(count)")
                         var x=ChannelModel(name: name, messages: count)
                         

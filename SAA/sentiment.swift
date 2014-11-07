@@ -44,8 +44,8 @@ class Sentiment: NSObject {
     }
     }
     override init() {
-        _positive=false
-        _neutral=false
-        _negative=false
+        _positive=true
+        _neutral=true
+        _negative=true
     }
 }

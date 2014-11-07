@@ -25,6 +25,7 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
         anzahl.setTranslatesAutoresizingMaskIntoConstraints(false)
         anzahl.textColor=Colors.leftMenuInactiveTextColor
         content=UIView()
+        
         content.setTranslatesAutoresizingMaskIntoConstraints(false)
         super.init()
         dataSource=ChannelData(filter:filter)
@@ -39,6 +40,10 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        content.layer.borderColor=Colors.grafikBorderColor.CGColor
+        content.layer.borderWidth=1
+        content.layer.cornerRadius=5
+        
         beitrag.text="Beiträge"
         anzahl.textAlignment=NSTextAlignment.Right
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -74,7 +79,7 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
                 var constr1:NSLayoutConstraint
                 if(i==1)
                 {
-                    constr1=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0)
+                    constr1=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Top,multiplier: 1,constant:5)
                 }
                 else
                 {
@@ -116,10 +121,10 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
             NSLayoutConstraint(item:anzahl,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:anzahl,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10),
             
-            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: beitrag,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 25),
-            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 5),
-            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -5),
-            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -20),
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: beitrag,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 22),
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 2),
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -4),
+            NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -18),
             
             
         ]

@@ -23,6 +23,7 @@ class CalendarController: LeftFilterViewController {
         zeitraum.textColor=Colors.zeitraumLabelTextColor
         zeitraum.font=UIFont.systemFontOfSize(UIFont.systemFontSize())
         formatter=NSDateFormatter()
+       formatter.locale=NSLocale.currentLocale()
         formatter.dateFormat="dd.MMMM.yyyy"
         
         

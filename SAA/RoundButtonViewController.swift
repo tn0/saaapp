@@ -7,7 +7,7 @@ class RoundButtonViewController: BaseViewController {
     
     var text:String {
     get {
-        return label.text
+        return label.text!
     }
     set {
         label.text=newValue

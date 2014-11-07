@@ -5,6 +5,14 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string></string>
+			<key>Key</key>
+			<string></string>
+		</dict>
+		<dict>
 			<key>SAA</key>
 			<string>Group</string>
 			<key>Type</key>
@@ -16,7 +24,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>http://192.168.131.30:8000</string>
+			<string>http://clsbm.comlineag.de</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
@@ -79,6 +87,24 @@
 			<string>Alphabet</string>
 			<key>Title</key>
 			<string>Such-Domäne</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+			<key>DefaultValue</key>
+			<string>Cortal Consors</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>Key</key>
+			<string>customer</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>Title</key>
+			<string>Kunde</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>

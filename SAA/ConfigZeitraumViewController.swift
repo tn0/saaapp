@@ -35,7 +35,8 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
         head.text="Vordefinierte Zeiträume"
         head.textColor=Colors.configLabelTextColor
         calendar=CalendarViewController(date: _filter.zeitraum.begin)
-        definedAll=CheckboxViewController(status: CheckBoxState.SELECTED)
+        
+        definedAll=CheckboxViewController(status: CheckBoxState.UNSELECTED)
         definedAll.text="Gesamter Zeitraum"
         definedYear=CheckboxViewController(status: CheckBoxState.UNSELECTED)
         definedYear.text="Laufendes Jahr"
@@ -54,10 +55,35 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
         bis.backgroundColor=Colors.zeitraumConfigInactiveBackgroundColor;
         bis.setTitleColor(Colors.zeitraumConfigInactiveTitleColor, forState: UIControlState.Normal)
         calendar.date=filter.zeitraum.begin
+        setCheckboxStates(filter.zeitraum._index)
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setCheckboxStates(index:Int)
+    {
+        switch(index)
+            {
+        case 0:
+            definedAll.status=CheckBoxState.SELECTED
+            
+        case 1:
+            definedYear.status=CheckBoxState.SELECTED
+                    
+        case 2:
+            definedMonth.status=CheckBoxState.SELECTED
+                        
+        case 3:
+            definedQuartal.status=CheckBoxState.SELECTED
+        default:
+            definedAll.status=CheckBoxState.UNSELECTED
+            definedYear.status=CheckBoxState.UNSELECTED
+            definedMonth.status=CheckBoxState.UNSELECTED
+            definedQuartal.status=CheckBoxState.UNSELECTED
+            
+        }
     }
     
     func refreshCalendar()
@@ -158,10 +184,12 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
                 filter.zeitraum.begin=DateUtilities.startOfTime(NSDate())
                 filter.zeitraum.end=DateUtilities.endOfTime(NSDate())
                 filter.zeitraum.useFilter=false;
+                filter.zeitraum._index = 0;
               }
               else
               {
                 filter.zeitraum.useFilter=true;
+                filter.zeitraum._index = -1;
               }
             }
            
@@ -178,6 +206,11 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
                     definedQuartal.status=CheckBoxState.UNSELECTED
                     filter.zeitraum.begin=DateUtilities.startOfYear(NSDate())
                     filter.zeitraum.end=DateUtilities.endOfYear(NSDate())
+                    filter.zeitraum._index = 1;
+                }
+                else
+                {
+                    filter.zeitraum._index = -1;
                 }
                 
             }
@@ -195,6 +228,11 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
                     definedQuartal.status=CheckBoxState.UNSELECTED
                     filter.zeitraum.begin=DateUtilities.startOfMonth(NSDate())
                     filter.zeitraum.end=DateUtilities.endOfMonth(NSDate())
+                    filter.zeitraum._index = 2;
+                }
+                else
+                {
+                    filter.zeitraum._index = -1;
                 }
                 
             }
@@ -211,6 +249,11 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
                     definedMonth.status=CheckBoxState.UNSELECTED
                     filter.zeitraum.begin=DateUtilities.startOfQuartal(NSDate())
                     filter.zeitraum.end=DateUtilities.endOfQuartal(NSDate())
+                    filter.zeitraum._index = 3;
+                }
+                else
+                {
+                    filter.zeitraum._index = -1;
                 }
                 
             }

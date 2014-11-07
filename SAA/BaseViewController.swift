@@ -86,8 +86,6 @@ class BaseViewController: UIViewController {
         }
     }
     func removeAllChilds() {
-        
-        
         for   controller  in childViewControllers {
             removeChild(controller as UIViewController)
         }
