@@ -15,7 +15,7 @@ class BarView: UIView {
     var max:Int64=0
     
     init(anz:Int64 , max:Int64) {
-         var frame=CGRect(x: 0, y: 0, width: 0, height: 0)
+         let frame=CGRect(x: 0, y: 0, width: 0, height: 0)
         
         
         super.init(frame: frame)
@@ -39,10 +39,10 @@ class BarView: UIView {
         super.drawRect(rect)
         if(max > 0)
         {
-            var l:Double=Double(anz)/Double(max);
-            var context:CGContext = UIGraphicsGetCurrentContext()
+            let l:Double=Double(anz)/Double(max);
+            let context:CGContext = UIGraphicsGetCurrentContext()!
             CGContextSetLineWidth(context,1.0)
-            var c:CGColor=Colors.channelGraficBarColor.CGColor
+            let c:CGColor=Colors.channelGraficBarColor.CGColor
             CGContextSetStrokeColorSpace(context, CGColorGetColorSpace(c))
             CGContextSetStrokeColorWithColor(context, c)
             CGContextSetFillColorSpace(context, CGColorGetColorSpace(c))
@@ -53,7 +53,7 @@ class BarView: UIView {
             CGContextAddLineToPoint(context,CGFloat(l)*frame.width, 0)
             CGContextAddLineToPoint(context,CGFloat(l)*frame.width, frame.height)
             CGContextAddLineToPoint(context,0, frame.height)
-            CGContextDrawPath(context,CGPathDrawingMode(3))
+            CGContextDrawPath(context,CGPathDrawingMode(rawValue: 3)!)
         }
         
     }

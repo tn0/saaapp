@@ -43,7 +43,7 @@ class CheckboxViewController: BaseViewController {
     {
         Debug.print("CheckboxViewController::init")
         box=Checkbox(status: status)
-        box.setTranslatesAutoresizingMaskIntoConstraints(false)
+        box.translatesAutoresizingMaskIntoConstraints=false
         label=UILabel()
         label.font=UIFont.systemFontOfSize(UIFont.systemFontSize()*1.1)
         if(status==CheckBoxState.SELECTED)
@@ -54,8 +54,8 @@ class CheckboxViewController: BaseViewController {
         {
             label.textColor=Colors.checkboxUnselectedColor
         }
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
-        super.init(nibName: nil, bundle: nil)
+        label.translatesAutoresizingMaskIntoConstraints=false
+        super.init()
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -66,18 +66,20 @@ class CheckboxViewController: BaseViewController {
     {
         Debug.print("CheckboxViewController::viewDidLoad")
         super.viewDidLoad()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints=false
         view.addSubview(box)
         view.addSubview(label)
-                box.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+                box.translatesAutoresizingMaskIntoConstraints=false
+        label.translatesAutoresizingMaskIntoConstraints=false
         
-        var tapRecognizer=UITapGestureRecognizer(target: self, action: "stateChanged:")
+
+        let tapRecognizer=UITapGestureRecognizer(target: self, action: #selector(CheckboxViewController.stateChanged(_:)))
         tapRecognizer.numberOfTapsRequired=1;
         tapRecognizer.numberOfTouchesRequired=1;
         view.addGestureRecognizer(tapRecognizer)
-        
-        box.addTarget(self, action: "stateChanged:", forControlEvents: UIControlEvents.TouchDown)
+
+
+        box.addTarget(self, action: #selector(CheckboxViewController.stateChanged(_:)), forControlEvents: UIControlEvents.TouchDown)
         setConstraints()
     }
     
@@ -108,11 +110,15 @@ class CheckboxViewController: BaseViewController {
     func setConstraints()
     {
         Debug.print("setConstraints in CheckboxViewController")
-        var constraints = [
+        var constraints:[NSLayoutConstraint] = [
             NSLayoutConstraint(item: box,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: box,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: box, attribute:NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem:nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 30),
             NSLayoutConstraint(item: box, attribute:NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem:nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 30),
+            ]
+        view.addConstraints(constraints)
+        
+        constraints = [    
             NSLayoutConstraint(item: label,attribute: NSLayoutAttribute.CenterY,relatedBy: NSLayoutRelation.Equal,toItem: box,attribute: NSLayoutAttribute.CenterY,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: box,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 5),
             NSLayoutConstraint(item: label, attribute:NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.GreaterThanOrEqual,toItem:nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 100),

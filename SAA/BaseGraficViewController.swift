@@ -9,10 +9,12 @@
 import UIKit
 
 class BaseGraficViewController: BaseViewController, NewDataDelegate {
+//class BaseGraficViewController: BaseViewController {
     
     var dataSource:BasicNetwork?
     override init()
     {
+        Debug.print("BaseGraficViewController::init")
         super.init()
     }
     
@@ -43,7 +45,7 @@ class BaseGraficViewController: BaseViewController, NewDataDelegate {
     func showAlert(msg:String){
         Errorlock.showError=true
         Debug.print("errorAlert \(errorAlert?.debugDescription)")
-        if(errorAlert? == nil)
+        if(errorAlert == nil)
         {
         Debug.print("new errorAlert \(errorAlert?.debugDescription)")
             errorAlert = UIAlertView()

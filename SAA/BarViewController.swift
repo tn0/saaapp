@@ -16,6 +16,8 @@ class BarViewController: BaseViewController {
     
     init(name:String, anz: Int64, max: Int64)
     {
+        Debug.print("BarViewController::init")
+
         label=UILabel()
         label.font=UIFont.systemFontOfSize(UIFont.smallSystemFontSize()*0.7)
         self.anz=UILabel()
@@ -33,12 +35,14 @@ class BarViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
+        Debug.print("BarViewController::viewDidLoad")
+
         super.viewDidLoad()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints=false
+        label.translatesAutoresizingMaskIntoConstraints=false
         
-        anz.setTranslatesAutoresizingMaskIntoConstraints(false)
-        bar.setTranslatesAutoresizingMaskIntoConstraints(false)
+        anz.translatesAutoresizingMaskIntoConstraints=false
+        bar.translatesAutoresizingMaskIntoConstraints=false
         view.addSubview(label)
         view.addSubview(anz)
         view.addSubview(bar)
@@ -49,19 +53,25 @@ class BarViewController: BaseViewController {
     func setConstraints()
     {
         Debug.print("\(self.description)::setConstraints")
-        var constraints = [
+        var constraints:[NSLayoutConstraint] = [
             
             
             NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 0.3,constant: 0),
             NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
+            ]
+        view.addConstraints(constraints)
             
+            constraints = [
             NSLayoutConstraint(item:anz,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:anz,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: label,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 5),
             NSLayoutConstraint(item:anz,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 0.2,constant: 0),
             NSLayoutConstraint(item:anz,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
+            ]
+        view.addConstraints(constraints)
             
+            constraints = [
             NSLayoutConstraint(item:bar,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:bar,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: anz,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 5),
             NSLayoutConstraint(item:bar,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
@@ -72,12 +82,16 @@ class BarViewController: BaseViewController {
     
     func refresh(name:String, anz:Int64,max:Int64)
     {
+        Debug.print("BarViewController::refresh")
+
         self.anz.text="\(anz)"
         label.text=name
         bar.refresh(anz, max:max)
         
     }
     override func didReceiveMemoryWarning() {
+        Debug.print("BarViewController::didReceiveMemoryWarning")
+
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

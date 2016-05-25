@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
+class ChannelGraficViewController: BaseGraficViewController{
 
     var beitrag:UILabel
     var anzahl:UILabel
@@ -18,15 +18,15 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
     {
         
         beitrag=UILabel()
-        beitrag.setTranslatesAutoresizingMaskIntoConstraints(false)
+        beitrag.translatesAutoresizingMaskIntoConstraints=false
         beitrag.textColor=Colors.leftMenuInactiveTextColor
         
         anzahl=UILabel()
-        anzahl.setTranslatesAutoresizingMaskIntoConstraints(false)
+        anzahl.translatesAutoresizingMaskIntoConstraints=false
         anzahl.textColor=Colors.leftMenuInactiveTextColor
         content=UIView()
         
-        content.setTranslatesAutoresizingMaskIntoConstraints(false)
+        content.translatesAutoresizingMaskIntoConstraints=false
         super.init()
         dataSource=ChannelData(filter:filter)
           dataSource!.delegate=self
@@ -46,7 +46,7 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
         
         beitrag.text="Beiträge"
         anzahl.textAlignment=NSTextAlignment.Right
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints=false
         view.addSubview(beitrag)
         view.addSubview(anzahl)
         view.addSubview(content)
@@ -56,11 +56,11 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
     override func dataLoaded(sender: BasicNetwork)
     {
         removeAllSubViewsfromView(content)
-        var constr=content.constraints()
+        let constr=content.constraints
         content.removeConstraints(constr)
         Debug.print("\(self) Data Loaded update grafic")
-        var source:ChannelData=dataSource as ChannelData
-        var max=source.maxMessages
+        let source:ChannelData=dataSource as! ChannelData
+        let max=source.maxMessages
         
         anzahl.text="\(source.sumOfMessages)"
         if( source.data?.count > 7)
@@ -73,8 +73,8 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
             var oldcontroller:BarViewController?
             for  item in source.data!
             {
-                var model=item as ChannelModel
-                var controller=BarViewController(name: model.name,anz: model.messages,max: max)
+                let model=item as! ChannelModel
+                let controller=BarViewController(name: model.name,anz: model.messages,max: max)
                 addChildToSubView(controller,view: content)
                 var constr1:NSLayoutConstraint
                 if(i==1)
@@ -85,15 +85,15 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
                 {
                     constr1=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: oldcontroller!.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 10)
                 }
-                var constr2=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 10)
-                var constr3=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10)
-                var constr4=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Height,multiplier: 1.0/7.0,constant: -60.0 / 7.0)
+                let constr2:NSLayoutConstraint=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 10)
+                let constr3:NSLayoutConstraint=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10)
+                let constr4:NSLayoutConstraint=NSLayoutConstraint(item: controller.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Height,multiplier: 1.0/7.0,constant: -60.0 / 7.0)
                 content.addConstraint(constr1)
                 content.addConstraint(constr2)
                 content.addConstraint(constr3)
                 content.addConstraint(constr4)
                 oldcontroller=controller
-                i++
+                i += 1
             }
         }
        
@@ -111,16 +111,21 @@ class ChannelGraficViewController: BaseGraficViewController,NewDataDelegate {
     func setConstraints()
     {
         Debug.print("\(self.description)::setConstraints")
-        var constraints = [
+        var constraints:[NSLayoutConstraint] = [
             
             
             NSLayoutConstraint(item: beitrag,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: beitrag,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 10),
-            
-            
+            ]
+        view.addConstraints(constraints)
+        
+            constraints = [
             NSLayoutConstraint(item:anzahl,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:anzahl,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -10),
-            
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: beitrag,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 22),
             NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 2),
             NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -4),

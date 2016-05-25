@@ -24,12 +24,12 @@ class GrafikIndicator: UIView {
     }
     
     
-    override init() {
-        var frame=CGRect(x: 0, y: 0, width: 0, height: 0)
-        
+    init() {
+        let frame=CGRect(x: 0, y: 0, width: 0, height: 0)
         
         super.init(frame: frame)
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        super.translatesAutoresizingMaskIntoConstraints=false;
+        translatesAutoresizingMaskIntoConstraints=false
         backgroundColor=Colors.transparent
     }
     
@@ -42,11 +42,11 @@ class GrafikIndicator: UIView {
     {
         Debug.print("selected = \(selected)")
         super.drawRect(rect)
-        var width=rect.height/3
+        let width=rect.height/3
         Debug.print("selected = \(selected) rect \(rect) width \(width)")
-        var context:CGContext = UIGraphicsGetCurrentContext()
+        let context:CGContext = UIGraphicsGetCurrentContext()!
         CGContextSetLineWidth(context,1)
-        var c:CGColor=Colors.grafikIndicatorColor.CGColor
+        let c:CGColor=Colors.grafikIndicatorColor.CGColor
         CGContextSetStrokeColorSpace(context, CGColorGetColorSpace(c))
         CGContextSetStrokeColorWithColor(context, c)
         CGContextSetFillColorSpace(context, CGColorGetColorSpace(c))
@@ -76,7 +76,7 @@ class GrafikIndicator: UIView {
         }
         
         CGContextClosePath(context)
-        CGContextDrawPath(context,CGPathDrawingMode(3))
+        CGContextDrawPath(context,CGPathDrawingMode(rawValue: 3)!)
     }
     
     

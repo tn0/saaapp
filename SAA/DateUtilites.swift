@@ -13,122 +13,123 @@ struct DateUtilities
     
     static func getComponents(calendar:NSCalendar,date:NSDate) -> NSDateComponents
     {
-        var dateComponents=calendar.components( NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.TimeZoneCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit  | NSCalendarUnit.SecondCalendarUnit | NSCalendarUnit.QuarterCalendarUnit, fromDate: date)
+        
+        let dateComponents:NSDateComponents=calendar.components( [ .Year , .Month , .Day , .TimeZone , .Hour , .Minute , .Second , .Quarter ], fromDate: date)
         return dateComponents
     }
     
     static func dayOfWeek(date:NSDate) -> Int
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var components = calendar.components(NSCalendarUnit.WeekdayCalendarUnit, fromDate: date)
-        var day=components.weekday - 2
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let components:NSDateComponents = calendar.components(.Weekday, fromDate: date)
+        let  day:Int=components.weekday
         return day
     }
     
     static func startOfWeek(date:NSDate) -> NSDate
     {
         
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
-        dateComponents.day=dateComponents.day - dayOfWeek(date) + 2
-        var begin=calendar.dateFromComponents(dateComponents)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
+        dateComponents.day=dateComponents.day - dayOfWeek(date)
+        let begin=calendar.dateFromComponents(dateComponents)
         return begin!
     }
     
     static func endOfWeek(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
-        dateComponents.day=dateComponents.day + (7 - dayOfWeek(date) ) + 1
-        var end=calendar.dateFromComponents(dateComponents)
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
+        dateComponents.day=dateComponents.day + (7 - dayOfWeek(date) )
+        let end=calendar.dateFromComponents(dateComponents)
         return end!    }
     
     static func startOfMonth(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         dateComponents.day = 1
-        var begin=calendar.dateFromComponents(dateComponents)
+        let begin=calendar.dateFromComponents(dateComponents)
         return begin!
     }
     
     static func endOfMonth(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
-        var range=calendar.rangeOfUnit(NSCalendarUnit.CalendarUnitDay, inUnit: NSCalendarUnit.CalendarUnitMonth, forDate: date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents:NSDateComponents=DateUtilities.getComponents(calendar,date:date)
+        let range:NSRange=calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: date)
         dateComponents.day=range.length
-        var end=calendar.dateFromComponents(dateComponents)
-        return end!
+        let end:NSDate=calendar.dateFromComponents(dateComponents)!
+        return end
     }
     
     
     static func startOfYear(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         dateComponents.day = 1
         dateComponents.month=1
-        var begin=calendar.dateFromComponents(dateComponents)
+        let begin=calendar.dateFromComponents(dateComponents)
         return begin!
     }
     
     static func startOfQuartal(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
-        var range=calendar.rangeOfUnit(NSCalendarUnit.CalendarUnitMonth, inUnit: NSCalendarUnit.CalendarUnitQuarter, forDate: date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents:NSDateComponents=DateUtilities.getComponents(calendar,date:date)
+        let range:NSRange=calendar.rangeOfUnit(.Month, inUnit:  .Quarter, forDate: date)
         Debug.print("DateUtilities::startOfQuratal range \(range)")
         dateComponents.day = 1
         dateComponents.month=range.location
         dateComponents.hour=12
         
-        var begin=calendar.dateFromComponents(dateComponents)
-        return begin!
+        let begin:NSDate=calendar.dateFromComponents(dateComponents)!
+        return begin
     }
     
     static func endOfQuartal(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
-        var range=calendar.rangeOfUnit(NSCalendarUnit.CalendarUnitMonth, inUnit: NSCalendarUnit.CalendarUnitQuarter, forDate: date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents:NSDateComponents=DateUtilities.getComponents(calendar,date:date)
+        let range:NSRange=calendar.rangeOfUnit(.Month, inUnit: .Quarter, forDate: date)
         dateComponents.month=range.location+range.length-1
-        var begin=calendar.dateFromComponents(dateComponents)
-        var end=DateUtilities.endOfMonth(begin!)
+        let begin:NSDate=calendar.dateFromComponents(dateComponents)!
+        let end:NSDate=DateUtilities.endOfMonth(begin)
         return end
     }
     
     static func startOfTime(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         dateComponents.day = 1
         dateComponents.month=1
         dateComponents.year=1970
-        var begin=calendar.dateFromComponents(dateComponents)
+        let begin=calendar.dateFromComponents(dateComponents)
         return begin!
     }
 
     static func endOfTime(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         dateComponents.day = 1
         dateComponents.month=1
         dateComponents.year=2038
-        var begin=calendar.dateFromComponents(dateComponents)
+        let begin=calendar.dateFromComponents(dateComponents)
         return begin!
     }
     
     static func dayOfMonth(date:NSDate,day:Int) -> NSDate
     {
         Debug.print("DateUtilities::DayOfMonth set \(date) to \(day)")
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         dateComponents.day = day
-        var begin=calendar.dateFromComponents(dateComponents)
+        let begin=calendar.dateFromComponents(dateComponents)
         Debug.print("DateUtilities::DayOfMonth Result \(begin)" )
         return begin!
     }
@@ -136,14 +137,14 @@ struct DateUtilities
     static func endOfYear(date:NSDate) -> NSDate
     {
         Debug.print("DateUtilities::EndOfYear")
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         Debug.print("dateComponents start \(dateComponents)")
         dateComponents.day=31
         dateComponents.month=12
         Debug.print("dateComponents end \(dateComponents)")
         
-        var end=calendar.dateFromComponents(dateComponents)
+        let end=calendar.dateFromComponents(dateComponents)
         Debug.print("Date end \(end)")
         return end!
     }
@@ -153,55 +154,55 @@ struct DateUtilities
     
     static func oneWeekBack(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         dateComponents.weekOfYear=dateComponents.weekOfYear - 1
-        var week=calendar.dateFromComponents(dateComponents)
+        let week=calendar.dateFromComponents(dateComponents)
         return week!;
     }
     
     static func oneMonthBack(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         Debug.print("Date \(date) year \(dateComponents.year)  month \(dateComponents.month) day \(dateComponents.day)")
         if(dateComponents.month == 1 )
         {
-            dateComponents.year--
+            dateComponents.year -= 1
             dateComponents.month=12
         }
         else
         {
-            dateComponents.month--
+            dateComponents.month -= 1
         }
         Debug.print("Date \(date) year \(dateComponents.year)  month \(dateComponents.month) day \(dateComponents.day)")
-        var month=calendar.dateFromComponents(dateComponents)
+        let month=calendar.dateFromComponents(dateComponents)
         Debug.print("month \(date) year \(dateComponents.year)  month \(dateComponents.month) day \(dateComponents.day)")
         return month!;
     }
     
     static func oneMonthFor(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         if(dateComponents.month == 12 )
         {
-            dateComponents.year++
+            dateComponents.year += 1
             dateComponents.month=1
         }
         else
         {
-            dateComponents.month++
+            dateComponents.month += 1
         }
-        var month=calendar.dateFromComponents(dateComponents)
+        let month=calendar.dateFromComponents(dateComponents)
         return month!;
     }
     static func oneYearBack(date:NSDate) -> NSDate
     {
-        var calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
-        var dateComponents=DateUtilities.getComponents(calendar,date:date)
+        let calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let dateComponents=DateUtilities.getComponents(calendar,date:date)
         dateComponents.year=dateComponents.year - 1
-        var year=calendar.dateFromComponents(dateComponents)
+        let year=calendar.dateFromComponents(dateComponents)
         return year!;
     }
     

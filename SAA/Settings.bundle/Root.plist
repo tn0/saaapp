@@ -18,16 +18,16 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSTitleValueSpecifier</string>
-            <key>Title</key>
-            <string>Version</string>
-            <key>DefaultValue</key>
-            <string>0.9.7</string>
-            <key>Key</key>
-            <string>version</string>
-        </dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>DefaultValue</key>
+			<string>0.9.7</string>
+			<key>Key</key>
+			<string>version</string>
+		</dict>
 		<dict>
 			<key>AutocapitalizationType</key>
 			<string>None</string>
@@ -52,7 +52,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>SBM_EXT</string>
+			<string></string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
@@ -70,7 +70,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>Mon#4pos!soCIAL</string>
+			<string></string>
 			<key>IsSecure</key>
 			<true/>
 			<key>Key</key>
@@ -88,7 +88,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>Banking</string>
+			<string>Bahn</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
@@ -106,7 +106,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>Cortal Consors</string>
+			<string>Bahn</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>

@@ -47,14 +47,14 @@ class CheckInputController: BaseViewController {
             box=Checkbox(status: CheckBoxState.UNSELECTED)
         }
         
-        box.setTranslatesAutoresizingMaskIntoConstraints(false)
+        box.translatesAutoresizingMaskIntoConstraints=false
         label=UITextField()
         label.font=UIFont.systemFontOfSize(UIFont.systemFontSize()*1.1)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints=false
         label.backgroundColor=UIColor.whiteColor()
         label.textColor=UIColor.darkTextColor()
         label.text=filter.keywords.freetext
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -65,19 +65,21 @@ class CheckInputController: BaseViewController {
     {
         Debug.print("CheckInputController::viewDidLoad")
         super.viewDidLoad()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints=false
         view.addSubview(box)
         view.addSubview(label)
-        box.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        box.translatesAutoresizingMaskIntoConstraints=false
+        label.translatesAutoresizingMaskIntoConstraints=false
         
-        var tapRecognizer=UITapGestureRecognizer(target: self, action: "stateChanged:")
+ 
+        let tapRecognizer=UITapGestureRecognizer(target: self, action: #selector(CheckInputController.stateChanged(_:)))
         tapRecognizer.numberOfTapsRequired=1;
         tapRecognizer.numberOfTouchesRequired=1;
         view.addGestureRecognizer(tapRecognizer)
-        
-        box.addTarget(self, action: "stateChanged:", forControlEvents: UIControlEvents.TouchDown)
-        label.addTarget(self,action: "textFieldChanged:", forControlEvents: UIControlEvents.EditingChanged)
+       
+
+        box.addTarget(self, action: #selector(CheckInputController.stateChanged(_:)), forControlEvents: UIControlEvents.TouchDown)
+        label.addTarget(self,action: #selector(CheckInputController.textFieldChanged(_:)), forControlEvents: UIControlEvents.EditingChanged)
         setConstraints()
         
     }
@@ -85,7 +87,7 @@ class CheckInputController: BaseViewController {
     
     func textFieldChanged(field:UITextField)
     {
-        if(field.text.isEmpty)
+        if(field.text!.isEmpty)
         {
             status=CheckBoxState.UNSELECTED
         }
@@ -93,7 +95,7 @@ class CheckInputController: BaseViewController {
         {
             status=CheckBoxState.SELECTED
         }
-        filter.keywords.freetext=field.text
+        filter.keywords.freetext=field.text!
     }
     
     func stateChanged(c: AnyObject ) {
@@ -125,11 +127,15 @@ class CheckInputController: BaseViewController {
     func setConstraints()
     {
         Debug.print("setConstraints in CheckInputController")
-        var constraints = [
+        var constraints:[NSLayoutConstraint] = [
             NSLayoutConstraint(item: box,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: box,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: box, attribute:NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem:nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 30),
             NSLayoutConstraint(item: box, attribute:NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem:nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 30),
+            
+            ]
+        view.addConstraints(constraints)
+            constraints = [
             NSLayoutConstraint(item: label,attribute: NSLayoutAttribute.CenterY,relatedBy: NSLayoutRelation.Equal,toItem: box,attribute: NSLayoutAttribute.CenterY,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: box,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 5),
             NSLayoutConstraint(item: label, attribute:NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem:view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),

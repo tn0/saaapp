@@ -15,59 +15,53 @@ class Settings
     }
     func getUrl()->String?
     {
-        return getStringfromKey(SettingKey.URL.toRaw())
+        return getStringfromKey(SettingKey.URL.rawValue)
     }
     func getLogin()->String?
     {
-        return getStringfromKey(SettingKey.LOGIN.toRaw())
+        return getStringfromKey(SettingKey.LOGIN.rawValue)
     }
     func getPassword()->String?
     {
-        return getStringfromKey(SettingKey.PASSWORD.toRaw())
+        return getStringfromKey(SettingKey.PASSWORD.rawValue)
     }
     func getDomain()->String?
     {
-        return getStringfromKey(SettingKey.DOMAIN.toRaw())
+        return getStringfromKey(SettingKey.DOMAIN.rawValue)
     }
     
     func getCustomer()->String?
     {
-        return getStringfromKey(SettingKey.CUSTOMER.toRaw())
+        return getStringfromKey(SettingKey.CUSTOMER.rawValue)
     }
     func loadDefault()
     {
-        var bundle=NSBundle.mainBundle()
+        let bundle=NSBundle.mainBundle()
         Debug.print("bundle"+bundle.debugDescription)
-        var rootFileName=bundle.pathForResource("Settings.bundle/Root.plist", ofType: nil)
+        let rootFileName=bundle.pathForResource("Settings.bundle/Root.plist", ofType: nil)
         
         if(rootFileName != nil)
         {
             Debug.print("rootFileName "+rootFileName!)
-            var dic = NSDictionary(contentsOfFile: rootFileName!)
-            var prefKey:NSString=NSString(string: "PreferenceSpecifiers")
-            var pref=dic[prefKey] as NSArray
-            var appDefault:NSMutableDictionary=NSMutableDictionary()
+            let dic = NSDictionary(contentsOfFile: rootFileName!)
+            let prefKey:NSString=NSString(string: "PreferenceSpecifiers")
+            let pref=dic![prefKey] as! NSArray
+            var appDefault:[String:AnyObject]=[:]
             for item in pref
             {
                 Debug.print("item "+item.debugDescription!)
-                var i=item as NSDictionary
+                let i=item as! NSDictionary
+                /*
+                Debug.print("i "+i.debugDescription)
+                let k:NSString=NSString(string: "Key")
                 
-                Debug.print("i "+i.debugDescription!)
-                var k:NSString=NSString(string: "Key")
-                
-                Debug.print("k "+k.debugDescription!)
-                var key: String?=i[k] as String?
-                if( key != nil )
+                Debug.print("k "+k.debugDescription)
+                */
+                let key=i.objectForKey(NSString(string: "Key")) as? String
+                let val=i.objectForKey(NSString(string: "DefaultValue")) as? String
+                if  key != nil && !key!.containsString("") && val != nil
                 {
-                Debug.print("key "+key.debugDescription)
-                var val: AnyObject? = i[NSString(string: "DefaultValue")]
-                
-                    if( val != nil)
-                    {
-                        Debug.print("val "+val.debugDescription)
-                        Debug.print("Setting Defaults: Key " + key! + " value " + val.debugDescription)
-                        appDefault.setValue(val!, forKey: key!)
-                    }
+                    appDefault[key!]=val;
                 }
             }
             Debug.print("Default Settings: \(appDefault)")
@@ -84,7 +78,7 @@ class Settings
     func getStringfromKey(key:String) -> String?
     {
         var result:String? = NSUserDefaults.standardUserDefaults().stringForKey(key)
-        if(result? == nil)
+        if(result == nil)
         {
             loadDefault()
             result = NSUserDefaults.standardUserDefaults().stringForKey(key)

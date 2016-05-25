@@ -29,11 +29,12 @@ class MenuButton: UIButton {
         setNeedsDisplay()
     }
     }
-    override init(frame: CGRect?) {
+     override init(frame: CGRect) {
         _active=false
         
-        var f:CGRect
-        if frame? == nil
+        //var f:CGRect
+        /*
+        if frame == nil
         {
              f=CGRect()
         }
@@ -41,7 +42,8 @@ class MenuButton: UIButton {
         {
             f=frame!
         }
-        super.init(frame: f)
+ */
+        super.init(frame: frame)
         setTitleColor(Colors.leftMenuInactiveTextColor, forState: UIControlState.Normal)
         // Initialization code
     }
@@ -54,9 +56,9 @@ class MenuButton: UIButton {
     {
         super.drawRect(rect)
         Debug.print("Checkbox::drawRect \(rect)")
-        var context:CGContext = UIGraphicsGetCurrentContext()
+        let context:CGContext = UIGraphicsGetCurrentContext()!
         CGContextSetLineWidth(context,2.0)
-        var c:CGColor=Colors.leftMenuBorderColor.CGColor
+        let c:CGColor=Colors.leftMenuBorderColor.CGColor
         CGContextSetStrokeColorSpace(context, CGColorGetColorSpace(c))
         CGContextSetStrokeColorWithColor(context, c)
         CGContextSetFillColorSpace(context, CGColorGetColorSpace(c))
@@ -80,7 +82,7 @@ class MenuButton: UIButton {
             CGContextAddLineToPoint(context,frame.width, frame.height-2.0)
         }
         
-        CGContextDrawPath(context,CGPathDrawingMode(3))
+        CGContextDrawPath(context,CGPathDrawingMode(rawValue: 3)!)
     }
     
 }

@@ -11,21 +11,12 @@ import UIKit
 class BaseViewController: UIViewController {
     
     
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-       
-        
-        Debug.print("BaseViewController::TranslatesAutoresizingMaskIntoConstraints \(view.translatesAutoresizingMaskIntoConstraints()) \(self.debugDescription)")
-        
-        // Custom initialization
-    }
-    
-    
-    override init()
+    init()
     {
+        Debug.print("BaseViewController::init")
         super.init(nibName:nil , bundle:nil)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+     
+        //view.translatesAutoresizingMaskIntoConstraints=false
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -34,16 +25,22 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad()
     {
+        Debug.print("BaseViewController::viewDidLoad")
         super.viewDidLoad()
-     view.setTranslatesAutoresizingMaskIntoConstraints(false)   
+      view.translatesAutoresizingMaskIntoConstraints=false
     }
     
     override func viewDidLayoutSubviews()
     {
+        
+        Debug.print("BaseViewController::viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
         Debug.print(" \(self.description) ---> View \(view.frame.width) x \(view.frame.height) ")
+
     }
     func addChild(childController: UIViewController!) {
+        
+    Debug.print("BaseViewController::addChild")
         addChildViewController(childController)
         Debug.print("BaseViewController::addChild add \(childController.view.debugDescription) to \(self.description)")
         view.addSubview(childController.view)
@@ -51,6 +48,7 @@ class BaseViewController: UIViewController {
     }
     
     func addChildToSubView(childController: UIViewController!,view:UIView) {
+        Debug.print("BaseViewController::addChildToSubView")
         addChildViewController(childController)
         Debug.print("BaseViewController::addChildToSubView add \(childController.view.debugDescription) to \(view.description)")
         view.addSubview(childController.view)
@@ -64,8 +62,10 @@ class BaseViewController: UIViewController {
     }
     
     
+    
     func removeAllSubViews() {
-        var subview:UIView?;
+    Debug.print("BaseViewController::removeAllSubViews")
+       // var subview:UIView?;
      
         for   curview : AnyObject in view.subviews {
             if( curview is UIView)
@@ -76,7 +76,8 @@ class BaseViewController: UIViewController {
     }
     
     func removeAllSubViewsfromView(view:UIView) {
-        var subview:UIView?;
+        Debug.print("BaseViewController::removeAllSubViewsfromView")
+    //    var subview:UIView?;
         
         for   curview : AnyObject in view.subviews {
             if( curview is UIView)
@@ -86,6 +87,7 @@ class BaseViewController: UIViewController {
         }
     }
     func removeAllChilds() {
+        Debug.print("BaseViewController::removeAllChilds")
         for   controller  in childViewControllers {
             removeChild(controller as UIViewController)
         }

@@ -32,27 +32,29 @@ class SentimentData :BasicNetwork
         positive=0
         negative=0
         neutral=0
-        if(rawdata? != nil)
+        if(rawdata != nil)
         {
             
-            var l=rawdata!.count
+            let l=rawdata!.count
             Debug.print("Have \(l) datasets")
-            for var i=0; i<l; i++
+            if l > 0
+            {
+            for  i in 0..<l
             {
                 Debug.print("Item \(i)")
-                var item=rawdata![i] as? NSDictionary
+                let item:NSDictionary?=rawdata![i] as? NSDictionary
                 Debug.print("SentimentData::refresh::item \(item)")
                 
-                if(item? != nil)
+                if(item != nil)
                 {
                     
-                    var type=item!["TA_TYPE"] as String;
-                    var c=item!["COUNT"] as? NSNumber
+                    let type:String=item!["TA_TYPE"] as! String;
+                    let c:NSNumber?=item!["COUNT"] as? NSNumber
                     
                     
-                    if( c? != nil)
+                    if( c != nil)
                     {
-                        var count:Int64 = c!.longLongValue//NSNumber(c).longLongValue
+                        let count:Int64 = c!.longLongValue//NSNumber(c).longLongValue
                         Debug.print("type :"+type+" count \(count)")
                         if(type == "WeakNegativeSentiment" || type == "StrongNegativeSentiment")
                         {
@@ -71,6 +73,7 @@ class SentimentData :BasicNetwork
                     }
 
                 }
+            }
             }
             Debug.print("SentimentData::refresh::positive = \(positive) negative \(negative) neutral \(neutral)")
         }

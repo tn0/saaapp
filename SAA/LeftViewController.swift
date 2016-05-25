@@ -13,6 +13,7 @@ class LeftViewController: BaseViewController , FilterDelegate {
     var calendar:LeftFilterViewController
     var keywords:LeftFilterViewController
     var canals:LeftFilterViewController
+
     //var forum:UIView;
     
     var pane:Int = -1;
@@ -21,14 +22,20 @@ class LeftViewController: BaseViewController , FilterDelegate {
     
     
     
+    
     init(filter: Filter) {
+        
+
+    
         calendar=CalendarController(filter: filter);
         keywords=KeywordController(filter:filter)
         canals=CanalViewController(filter: filter)
         //forum=UIImageView()
-        self.filter=filter;
-        //forum.setTranslatesAutoresizingMaskIntoConstraints(false)
-        super.init(nibName: nil, bundle: nil)
+       self.filter=filter;
+        //forum.translatesAutoresizingMaskIntoConstraints=false
+        super.init()
+        Debug.print("\(self.description)::init")
+        
         // Custom initialization
             }
     
@@ -38,10 +45,10 @@ class LeftViewController: BaseViewController , FilterDelegate {
     
     override func viewDidLoad() {
         
-        Debug.print("BaseViewController::TranslatesAutoresizingMaskIntoConstraints \(view.translatesAutoresizingMaskIntoConstraints())")
+        Debug.print("BaseViewController::TranslatesAutoresizingMaskIntoConstraints \(view.translatesAutoresizingMaskIntoConstraints)")
         super.viewDidLoad()
         addChild(calendar)
-        //calendar.view.backgroundColor=UIColor.brownColor()
+       // calendar.view.backgroundColor=UIColor.brownColor()
         calendar.delegate=self
         
         addChild(keywords)
@@ -49,19 +56,22 @@ class LeftViewController: BaseViewController , FilterDelegate {
         
         addChild(canals)
         canals.delegate=self
-      // view.addSubview(forum)
+      
+        // view.addSubview(forum)
 
         setConstraints()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
+        Debug.print("\(self.description)::viewDidAppear")
+
         super.viewDidAppear(animated)
-        calendar.view.backgroundColor=UIColor.redColor()
+      //  calendar.view.backgroundColor=UIColor.redColor()
     
     }
     
-    var configConstraints = []
+    var configConstraints:[NSLayoutConstraint] = []
     func  showConfig(pane: Int)
     {
         Debug.print("\(self.description)::showConfig")
@@ -80,41 +90,53 @@ class LeftViewController: BaseViewController , FilterDelegate {
     
     func showFilter()
     {
+        Debug.print("\(self.description)::showFilter")
         view.removeConstraints(configConstraints)
+        config?.delegate=nil
         removeChild(config!)
+        
         
         calendar.updateDisplay()
         canals.updateDisplay()
         keywords.updateDisplay()
+
     }
     
     func setConstraints(){
         Debug.print("\(self.description)::setConstraints")
-        var constraints = [
+        var constraints:[NSLayoutConstraint] = [
+            
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 10),
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 50),
-            
+    ]
+    view.addConstraints(constraints)
+    constraints = [
             NSLayoutConstraint(item: canals.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: calendar.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 15),
             NSLayoutConstraint(item: canals.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: canals.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: canals.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1.0,constant: 70),
-            
+        ]
+        view.addConstraints(constraints)
+        constraints = [
           
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: canals.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 15),
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Height,multiplier: 0.3,constant: 0),
-            
-            /*
-            NSLayoutConstraint(item: forum,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: keywords.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 15),
+        ]
+        view.addConstraints(constraints)
+        /*
+        constraints = [
+                       NSLayoutConstraint(item: forum,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: keywords.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 15),
             NSLayoutConstraint(item: forum,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: forum,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: forum,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant:0 )
-            */
+            
         ]
         view.addConstraints(constraints)
+ */
     }
 
     override func didReceiveMemoryWarning() {

@@ -35,7 +35,7 @@ class Checkbox: UIButton {
         self._status=status
         super.init(frame: frame)
         self.setTitle("", forState: UIControlState.Normal)
-        self.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.translatesAutoresizingMaskIntoConstraints=false
         layer.cornerRadius=15
         layer.borderWidth=2
         if(_status == CheckBoxState.SELECTED)
@@ -60,18 +60,18 @@ class Checkbox: UIButton {
     {
         super.drawRect(rect)
         Debug.print("Checkbox::drawRect \(rect)")
-        var context:CGContext = UIGraphicsGetCurrentContext()
+        let context:CGContext = UIGraphicsGetCurrentContext()!
         if(status == CheckBoxState.SELECTED)
         {
         CGContextSetLineWidth(context,2.0)
-            var c:CGColor=Colors.checkboxSelectedColor.CGColor
+            let c:CGColor=Colors.checkboxSelectedColor.CGColor
             CGContextSetStrokeColorSpace(context, CGColorGetColorSpace(c))
             CGContextSetStrokeColorWithColor(context, Colors.checkboxSelectedColor.CGColor)
         CGContextBeginPath(context)
         CGContextMoveToPoint(context,1.0/3.0*frame.width ,self.frame.height*0.55)
         CGContextAddLineToPoint(context,1.0/2.0*frame.width, 0.75*frame.height)
         CGContextAddLineToPoint(context,2.0/3.0*frame.width, 1.0/3.0*frame.height)
-            CGContextDrawPath(context,CGPathDrawingMode(2))
+            CGContextDrawPath(context,CGPathDrawingMode(rawValue: 2)!)
         }
     }
 

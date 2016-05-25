@@ -1,24 +1,25 @@
 //
 import UIKit
 
-class SentimentGraficViewController: BaseGraficViewController,NewDataDelegate {
+//class SentimentGraficViewController: BaseGraficViewController,NewDataDelegate {
+class SentimentGraficViewController: BaseGraficViewController {
     
     var label:UILabel
     
     var content:UIView
     var graph:DonatView
-    let legende=SentimentGrafikLegendeViewController()
+    let legende:SentimentGrafikLegendeViewController=SentimentGrafikLegendeViewController()
     
     init(filter:Filter)
     {
         
         label=UILabel()
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints=false
         
         content=UIView()
-        content.setTranslatesAutoresizingMaskIntoConstraints(false)
+        content.translatesAutoresizingMaskIntoConstraints=false
         graph=DonatView(pos: 0,neg: 0,neutr: 0)
-        graph.setTranslatesAutoresizingMaskIntoConstraints(false)
+        graph.translatesAutoresizingMaskIntoConstraints=false
         super.init()
         dataSource=SentimentData(filter: filter)
         dataSource!.delegate=self
@@ -39,7 +40,7 @@ class SentimentGraficViewController: BaseGraficViewController,NewDataDelegate {
         content.layer.borderColor=Colors.grafikBorderColor.CGColor
         content.layer.borderWidth=1
         content.layer.cornerRadius=5
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints=false
         view.addSubview(label)
         
         view.addSubview(content)
@@ -56,7 +57,7 @@ class SentimentGraficViewController: BaseGraficViewController,NewDataDelegate {
     
     override func dataLoaded(sender: BasicNetwork)
     {
-        var source:SentimentData=dataSource as SentimentData
+        let source:SentimentData=dataSource as! SentimentData
         
         Debug.print("SentimentGraficViewController::dataLoaded \(source)")
         graph.refresh(source.positive, neg: source.negative, neutr: source.neutral)
@@ -70,29 +71,30 @@ class SentimentGraficViewController: BaseGraficViewController,NewDataDelegate {
     func setConstraints()
     {
         Debug.print("\(self.description)::setConstraints")
-        var constraints = [
-            
-            
+        var constraints:[NSLayoutConstraint] = [
             NSLayoutConstraint(item: label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 10),
-            
-            
-            
+            ]
+        view.addConstraints(constraints)
+        constraints = [
             NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: label,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 23),
             NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 2),
             NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -3),
             NSLayoutConstraint(item:content,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -18),
-            
+        ]
+        view.addConstraints(constraints)
+        constraints = [
             NSLayoutConstraint(item:legende.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 5),
             NSLayoutConstraint(item:legende.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Right,multiplier: 0.6,constant: 0),
             NSLayoutConstraint(item:legende.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -5),
             NSLayoutConstraint(item:legende.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -20),
-            
+        ]
+        view.addConstraints(constraints)
+        constraints = [
             NSLayoutConstraint(item:graph,attribute: NSLayoutAttribute.CenterY,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.CenterY,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:graph,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 5),
             NSLayoutConstraint(item:graph,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: graph,attribute: NSLayoutAttribute.Height,multiplier: 1,constant: 0),
             NSLayoutConstraint(item:graph,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -5),
-            
         ]
         view.addConstraints(constraints)
         

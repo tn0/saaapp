@@ -13,7 +13,7 @@ class ConfigCanalsViewController: BaseConfigViewController , CheckboxDelegate{
     var channels:UIView
     override init(_filter: Filter)  {
         channels=UIView();
-        channels.setTranslatesAutoresizingMaskIntoConstraints(false)
+        channels.translatesAutoresizingMaskIntoConstraints=false
         super.init(_filter: _filter)
 
         // Do any additional setup after loading the view.
@@ -25,7 +25,7 @@ class ConfigCanalsViewController: BaseConfigViewController , CheckboxDelegate{
     func checkboxStateChanged(sender: CheckboxViewController, state: CheckBoxState)
     {
         Debug.print("ConfigCannles::checkbocStateChanged \(sender) \(state)")
-        var name=sender.text
+        let name=sender.text
         for f in filter.channels.channels
         {
             if (f.name == name )
@@ -59,7 +59,7 @@ class ConfigCanalsViewController: BaseConfigViewController , CheckboxDelegate{
     func showChannels()
     {
         removeAllChilds()
-        var constraints=channels.constraints()
+        let constraints=channels.constraints
         channels.removeConstraints(constraints)
         var i=0
         var constr1:NSLayoutConstraint;
@@ -76,7 +76,7 @@ class ConfigCanalsViewController: BaseConfigViewController , CheckboxDelegate{
             {
                 status=CheckBoxState.UNSELECTED
             }
-            var checkbox=CheckboxViewController(status: status)
+            let checkbox=CheckboxViewController(status: status)
             checkbox.text=c.name
             checkbox.delegate=self
             
@@ -91,21 +91,21 @@ class ConfigCanalsViewController: BaseConfigViewController , CheckboxDelegate{
                 {
                     constr1=NSLayoutConstraint(item:checkbox.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: oldView!,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 40)
                 }
-                var constr2=NSLayoutConstraint(item:checkbox.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0)
-            var constr3=NSLayoutConstraint(item:checkbox.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 60)
-            var constr4=NSLayoutConstraint(item:checkbox.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0)
+                let constr2=NSLayoutConstraint(item:checkbox.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0)
+            let constr3=NSLayoutConstraint(item:checkbox.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 60)
+            let constr4=NSLayoutConstraint(item:checkbox.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0)
                 channels.addConstraint(constr1)
                 channels.addConstraint(constr2)
             channels.addConstraint(constr3)
             channels.addConstraint(constr4)
                 oldView=checkbox.view;
-                i++
+                i += 1
             }
         }
     func setConstraints() {
         
         Debug.print("setConstraints in KeywordsController")
-        var constraints = [
+        let constraints:[NSLayoutConstraint] = [
             
             
             NSLayoutConstraint(item:channels,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),

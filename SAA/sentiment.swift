@@ -1,5 +1,5 @@
 //
-//  sentiment.swift
+//  Sentiment.swift
 //  SAA
 //
 //  Created by Thomas Nowak on 16.7.14.

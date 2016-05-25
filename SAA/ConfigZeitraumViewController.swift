@@ -23,15 +23,16 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
     
     override init(_filter:Filter)
     {
+        
         Debug.print("ConfigZeitraumViewController::init")
         von=UIButton()
-        von.setTranslatesAutoresizingMaskIntoConstraints(false)
+        von.translatesAutoresizingMaskIntoConstraints=false
         von.setTitle("Von", forState: UIControlState.Normal)
         bis=UIButton()
-        bis.setTranslatesAutoresizingMaskIntoConstraints(false)
+        bis.translatesAutoresizingMaskIntoConstraints=false
         bis.setTitle("Bis", forState: UIControlState.Normal)
         head=UILabel()
-        head.setTranslatesAutoresizingMaskIntoConstraints(false)
+        head.translatesAutoresizingMaskIntoConstraints=false
         head.text="Vordefinierte Zeiträume"
         head.textColor=Colors.configLabelTextColor
         calendar=CalendarViewController(date: _filter.zeitraum.begin)
@@ -47,20 +48,22 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
         super.init(_filter: _filter)
         calendar.delegate=self
         cur=0
-        von.addTarget(self, action: "selVon:",  forControlEvents: UIControlEvents.TouchDown)
+        von.addTarget(self, action: #selector(ConfigZeitraumViewController.selVon(_:)),  forControlEvents: UIControlEvents.TouchDown)
         
         von.backgroundColor=Colors.zeitraumConfigActiveBackgroundColor;
         von.setTitleColor(Colors.zeitraumConfigActiveTitleColor, forState: UIControlState.Normal)
-        bis.addTarget(self, action: "selBis:",  forControlEvents: UIControlEvents.TouchDown)
+        bis.addTarget(self, action: #selector(ConfigZeitraumViewController.selBis(_:)),  forControlEvents: UIControlEvents.TouchDown)
         bis.backgroundColor=Colors.zeitraumConfigInactiveBackgroundColor;
         bis.setTitleColor(Colors.zeitraumConfigInactiveTitleColor, forState: UIControlState.Normal)
         calendar.date=filter.zeitraum.begin
         setCheckboxStates(filter.zeitraum._index)
+ 
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     func setCheckboxStates(index:Int)
     {
@@ -128,22 +131,26 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
     
     func selVon(sender: UIButton)
     {
+        
         von.backgroundColor=Colors.zeitraumConfigActiveBackgroundColor;
         von.setTitleColor(Colors.zeitraumConfigActiveTitleColor, forState: UIControlState.Normal)
-        bis.addTarget(self, action: "selBis:",  forControlEvents: UIControlEvents.TouchDown)
+        //bis.addTarget(self, action: "selBis:",  forControlEvents: UIControlEvents.TouchDown)
         bis.backgroundColor=Colors.zeitraumConfigInactiveBackgroundColor;
         bis.setTitleColor(Colors.zeitraumConfigInactiveTitleColor, forState: UIControlState.Normal)
+        
         calendar.date=filter.zeitraum.begin
         cur=0
     }
     
     func selBis(sender: UIButton)
     {
+        
         von.backgroundColor=Colors.zeitraumConfigInactiveBackgroundColor;
         von.setTitleColor(Colors.zeitraumConfigInactiveTitleColor, forState: UIControlState.Normal)
         
         bis.backgroundColor=Colors.zeitraumConfigActiveBackgroundColor;
         bis.setTitleColor(Colors.zeitraumConfigActiveTitleColor, forState: UIControlState.Normal)
+        
         calendar.date=filter.zeitraum.end
         cur=1
     }
@@ -277,51 +284,71 @@ class ConfigZeitraumViewController: BaseConfigViewController ,CalendarDelegate, 
     func setConstraints()
     {
         Debug.print("\(self.description)::setConstraints")
-        var constraints = [
+        var constraints:[NSLayoutConstraint] = [
             NSLayoutConstraint(item: von,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: von,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: von,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 0.25,constant: 0),
             NSLayoutConstraint(item: von,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 40),
-            
+            ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: bis,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: bis,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: von,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: bis,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 0.25,constant: 0),
             NSLayoutConstraint(item: bis,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 40),
-            
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: von,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: calendar.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 230),
-            
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: head,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: calendar.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: head,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: head,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             //NSLayoutConstraint(item: head,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 40),
-            NSLayoutConstraint(item: definedAll.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: head,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 20),
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
+        NSLayoutConstraint(item: definedAll.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: head,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: definedAll.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedAll.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedAll.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 40),
-            
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: definedYear.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: definedAll.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: definedYear.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedYear.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedYear.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 40),
-            
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: definedMonth.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: definedYear.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: definedMonth.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedMonth.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedMonth.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 40),
-            
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: definedQuartal.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: definedMonth.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: definedQuartal.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedQuartal.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: definedQuartal.view,attribute: NSLayoutAttribute.Height,relatedBy: NSLayoutRelation.Equal,toItem: nil,attribute: NSLayoutAttribute.NotAnAttribute,multiplier: 1,constant: 40),
-            
-            
-            
         ]
         view.addConstraints(constraints)
     }
+
 
     /*
     // #pragma mark - Navigation

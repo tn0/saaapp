@@ -17,9 +17,10 @@ class CalendarController: LeftFilterViewController {
     var formatter:NSDateFormatter
    
     init(filter:Filter) {
+        Debug.print("CalendarController::init")
         self.filter=filter
         zeitraum=UILabel()
-        zeitraum.setTranslatesAutoresizingMaskIntoConstraints(false)
+        zeitraum.translatesAutoresizingMaskIntoConstraints=false
         zeitraum.textColor=Colors.zeitraumLabelTextColor
         zeitraum.font=UIFont.systemFontOfSize(UIFont.systemFontSize())
         formatter=NSDateFormatter()
@@ -27,7 +28,7 @@ class CalendarController: LeftFilterViewController {
         formatter.dateFormat="dd.MMMM.yyyy"
         
         
-        super.init(nibName: nil,bundle: nil)
+        super.init()
         button.text="< Zeitraum"
         pane = 0
         // Initialization code here.
@@ -39,21 +40,23 @@ class CalendarController: LeftFilterViewController {
     }
     override func updateDisplay()
     {
+        Debug.print("CalendarController::uopdateDisplay")
         super.updateDisplay()
         if(filter.zeitraum.useFilter)
         {
             Debug.print("Filter Zeitraum begin \(filter.zeitraum.begin)  end \(filter.zeitraum.end) + formatter "+formatter.stringFromDate(filter.zeitraum.end))
             zeitraum.text=formatter.stringFromDate(filter.zeitraum.begin) + " - " + formatter.stringFromDate(filter.zeitraum.end)
-            zeitraum.setTranslatesAutoresizingMaskIntoConstraints(false);
+            zeitraum.translatesAutoresizingMaskIntoConstraints=false
             
         }
         else
         {
             zeitraum.text="Gesamter Zeitraum"
         }
+       
     }
     override func viewDidLoad() {
-        Debug.print("CalendarController::viewDidLoad")
+                Debug.print("CalendarController::viewDidLoad")
         super.viewDidLoad()
         
         
@@ -61,7 +64,7 @@ class CalendarController: LeftFilterViewController {
         content.addSubview(zeitraum)
         
         Debug.print("Constrains from super \(view)")
-        setConstraints()
+                setConstraints()
         
     }
     override func viewDidLayoutSubviews()
@@ -72,7 +75,7 @@ class CalendarController: LeftFilterViewController {
     override func setConstraints() {
         Debug.print("setConstraints in CalendarController zeitraum \(zeitraum.debugDescription) content \(content.debugDescription)")
         
-        var constraints = [
+        let constraints:[NSLayoutConstraint] = [
             
             NSLayoutConstraint(item: zeitraum,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: zeitraum,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),

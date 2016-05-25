@@ -17,13 +17,13 @@ class LeftFilterViewController: BaseViewController {
     var pane:Int = -1
     var delegate: FilterDelegate?;
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        button=CalloutButton(nibName:nil,bundle:nil);
+    override init() {
+        button=CalloutButton();
         
         content=UIView();
         
         
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init()
       
     
   
@@ -49,13 +49,13 @@ class LeftFilterViewController: BaseViewController {
     override func viewDidLoad() {
         Debug.print("KeywordsController::viewDidLoad")
         super.viewDidLoad()
-        content.setTranslatesAutoresizingMaskIntoConstraints(false);
-        view.setTranslatesAutoresizingMaskIntoConstraints(false);
+        content.translatesAutoresizingMaskIntoConstraints=false;
+        view.translatesAutoresizingMaskIntoConstraints=false;
         Debug.print("LeftFilterViewController::viewDidLoad::add Content to view \(view.debugDescription)")
         addChild(button)
         view.addSubview(content);
         
-        var tapRecognizer=UITapGestureRecognizer(target: self, action: "colorTap:")
+        let tapRecognizer=UITapGestureRecognizer(target: self, action: #selector(LeftFilterViewController.colorTap(_:)))
         tapRecognizer.numberOfTapsRequired=1;
         tapRecognizer.numberOfTouchesRequired=1;
         view.addGestureRecognizer(tapRecognizer)
@@ -70,17 +70,18 @@ class LeftFilterViewController: BaseViewController {
     
     func setConstraints() {
         Debug.print("setConstraints in LeftFilterController")
-        var constraints = [
+        var constraints:[NSLayoutConstraint] = [
             NSLayoutConstraint(item: button.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: button.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
-            NSLayoutConstraint(item: button.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
+            NSLayoutConstraint(item: button.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0)
+            ]
+        view.addConstraints(constraints)
         
+        constraints = [
             NSLayoutConstraint(item: content,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: button.view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: content,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 20),
             NSLayoutConstraint(item: content,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
           //  NSLayoutConstraint(item: content,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-            
-            
         ]
         view.addConstraints(constraints)
         //NSLayoutConstraint.activateConstraints(constraints)

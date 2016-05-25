@@ -42,12 +42,12 @@ class Filter: FilterChangedDelegate,NewDataDelegate {
     
     func update()
     {
-        if(keywordUpdater? == nil)
+        if(keywordUpdater == nil)
         {
             keywordUpdater=KeywordFilter(filter: self)
             keywordUpdater!.delegate=self
         }
-        if(channelUpdater? == nil)
+        if(channelUpdater == nil)
         {
             channelUpdater=ChannelFilter(filter: self)
             channelUpdater!.delegate=self
@@ -58,8 +58,8 @@ class Filter: FilterChangedDelegate,NewDataDelegate {
     func dataLoaded(sender: BasicNetwork)
     {
         
-        var data:[AnyObject]=sender.data!
-        var fdata:[BasicFilter]=data as [BasicFilter]
+        let data:[AnyObject]=sender.data!
+        let fdata:[BasicFilter]=data as! [BasicFilter]
         if(sender is KeywordFilter)
         {
             keywords.keywords=fdata

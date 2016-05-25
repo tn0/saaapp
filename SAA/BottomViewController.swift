@@ -11,12 +11,14 @@ import UIKit
 class BottomViewController: BaseViewController {
 
     override func viewDidLoad() {
+        Debug.print("BottomViewController::init")
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
+        Debug.print("BottomViewController::didReceiveMemoryWarning")
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

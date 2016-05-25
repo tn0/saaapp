@@ -39,8 +39,9 @@ class GrafikViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
+        view.translatesAutoresizingMaskIntoConstraints=false
+        view.backgroundColor=UIColor.redColor()
+        view.opaque=true;
         
         addChild(channel)
         addChild(sentiment)
@@ -50,19 +51,23 @@ class GrafikViewController: BaseViewController {
         view.addSubview(keywordsIndicator)
         setConstraints()
         getData()
-        var channelRecognizer=UITapGestureRecognizer(target: self, action: "showDetails:")
+        
+        
+        
+        let channelRecognizer=UITapGestureRecognizer(target: self, action: #selector(GrafikViewController.showDetails(_:)))
         channelRecognizer.numberOfTapsRequired=1;
         channelRecognizer.numberOfTouchesRequired=1;
         channel.view.addGestureRecognizer(channelRecognizer)
-        var sentimentRecognizer=UITapGestureRecognizer(target: self, action: "showDetails:")
+        let sentimentRecognizer=UITapGestureRecognizer(target: self, action:  #selector(GrafikViewController.showDetails(_:)))
         sentimentRecognizer.numberOfTapsRequired=1;
         sentimentRecognizer.numberOfTouchesRequired=1;
         sentiment.view.addGestureRecognizer(sentimentRecognizer)
-        var keywordsRecognizer=UITapGestureRecognizer(target: self, action: "showDetails:")
+        let keywordsRecognizer=UITapGestureRecognizer(target: self, action:  #selector(GrafikViewController.showDetails(_:)))
         keywordsRecognizer.numberOfTapsRequired=1;
         keywordsRecognizer.numberOfTouchesRequired=1;
         keywords.view.addGestureRecognizer(keywordsRecognizer)
-        // Do any additional setup after loading the view.
+
+// Do any additional setup after loading the view.
     }
 
     func showDetails(c: UITapGestureRecognizer ) {
@@ -110,9 +115,9 @@ class GrafikViewController: BaseViewController {
     {
             if(timer != nil)
             {
-                    timer?.invalidate()
+                    timer!.invalidate()
             }
-        timer=NSTimer.scheduledTimerWithTimeInterval(1,target: self, selector: "delayedGetData:",userInfo: nil, repeats: false)
+        timer=NSTimer.scheduledTimerWithTimeInterval(1,target: self, selector: #selector(GrafikViewController.delayedGetData(_:)),userInfo: nil, repeats: false)
     }
     
     func delayedGetData(sender: AnyObject)
@@ -124,34 +129,47 @@ class GrafikViewController: BaseViewController {
     func setConstraints()
     {
         Debug.print("\(self.description)::setConstraints")
-        var constraints = [
-            
-            
+        var constraints:[NSLayoutConstraint] = [
             NSLayoutConstraint(item: channel.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: channel.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: channel.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: 0),
             NSLayoutConstraint(item: channel.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-            
+            ]
+        view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: sentiment.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: sentiment.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channel.view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: sentiment.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: 0),
             NSLayoutConstraint(item: sentiment.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-            
+            ]
+            view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: sentiment.view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: 0),
             NSLayoutConstraint(item: keywords.view,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-            
+            ]
+            view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: channelIndicator,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -10),
             NSLayoutConstraint(item: channelIndicator,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channel.view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: channelIndicator,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: channel.view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: channelIndicator,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-            
+            ]
+            view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: sentimentIndicator,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -10),
             NSLayoutConstraint(item: sentimentIndicator,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: sentiment.view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: sentimentIndicator,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: sentiment.view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: sentimentIndicator,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: 0),
-            
+            ]
+            view.addConstraints(constraints)
+        
+        constraints = [
             NSLayoutConstraint(item: keywordsIndicator,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -10),
             NSLayoutConstraint(item: keywordsIndicator,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: keywords.view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: keywordsIndicator,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: keywords.view,attribute: NSLayoutAttribute.Width,multiplier: 1,constant: 0),

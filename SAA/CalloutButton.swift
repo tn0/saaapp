@@ -22,12 +22,13 @@ class CalloutButton: BaseViewController {
         }
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init() {
+        Debug.print("CalloutButton::init")
         //image=UIImageView()
         label=UILabel()
         
         
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init()
         // Initialization code here.
         
         
@@ -38,39 +39,43 @@ class CalloutButton: BaseViewController {
     }
     
     override func  viewDidLoad(){
+        Debug.print("CalloutButton::viewDidLoad")
         view.userInteractionEnabled=true
-      //  image.setTranslatesAutoresizingMaskIntoConstraints(false)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+      // image.translatesAutoresizingMaskIntoConstraints=false
+        view.translatesAutoresizingMaskIntoConstraints=false
+        label.translatesAutoresizingMaskIntoConstraints=false
         label.textColor=Colors.calloutButtonTextColor
-        /*
-        var tapRecognizer=UITapGestureRecognizer(target: self, action: "colorTap:")
+    
+        let tapRecognizer=UITapGestureRecognizer(target: self, action: #selector(CalloutButton.colorTap(_:)))
         tapRecognizer.numberOfTapsRequired=1;
         tapRecognizer.numberOfTouchesRequired=1;
         view.addGestureRecognizer(tapRecognizer)
-*/
+
 //view.addSubview(image)
         view.addSubview(label)
         setConstraints()
     }
     
+    
+    
     override func viewDidLayoutSubviews()
     {
+        Debug.print("CalloutButton::viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
         Debug.print("\(self.description)  view \(view.frame)")
         
     }
-  /*
+  
     func colorTap(tapGestureRecognizer: UITapGestureRecognizer ) {
         
         Debug.print("View touched")
         
     }
-    */
+ 
     func setConstraints()
     {
         Debug.print("setConstraints in CalloutButton")
-        var constraints = [
+        let constraints:[NSLayoutConstraint] = [
             /*
             NSLayoutConstraint(item: image,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
             NSLayoutConstraint(item: image,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),

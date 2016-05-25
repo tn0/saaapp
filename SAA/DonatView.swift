@@ -18,16 +18,15 @@ class DonatView: UIView {
     init(pos:Int64, neg:Int64 , neutr:Int64) {
         
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        setTranslatesAutoresizingMaskIntoConstraints(false)
+        translatesAutoresizingMaskIntoConstraints = false
         refresh(pos,neg: neg,neutr: neutr)
         backgroundColor=Colors.transparent
         // Initialization code
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     
     func refresh(pos:Int64, neg:Int64 , neutr:Int64)
     {
@@ -39,7 +38,7 @@ class DonatView: UIView {
     
     func polar2cart(angle:Double,radius:Double) -> CGPoint
     {
-        var point=CGPoint()
+        var point:CGPoint=CGPoint()
         point.x=CGFloat(radius * cos(M_2_PI+angle))
         point.y=CGFloat(radius * sin(M_2_PI+angle))
         
@@ -58,7 +57,7 @@ class DonatView: UIView {
     
     func getMin(rect:CGRect) -> CGFloat
     {
-        var min=rect.width
+        var min:CGFloat=rect.width
         if(rect.height < min)
         {
             min=rect.height
@@ -69,26 +68,26 @@ class DonatView: UIView {
     override func drawRect(rect: CGRect)
     {
         super.drawRect(rect)
-        let maxRadius=getMin(rect)/2
+        let maxRadius:CGFloat=getMin(rect)/2
     
-        let borderRadius=maxRadius - 5
-        let outerRadius=borderRadius - 5
-        let innerRadius=outerRadius - 20
+        let borderRadius:CGFloat=maxRadius - 5
+        let outerRadius:CGFloat=borderRadius - 5
+        let innerRadius:CGFloat=outerRadius - 20
         
         let max:Int64=positive+negative+neutral
-        let posrad=anz2rad(positive,max: max)
-        let negrad=anz2rad(negative,max: max)
-        let neurad=anz2rad(neutral,max: max)
+        let posrad:Double=anz2rad(positive,max: max)
+        let negrad:Double=anz2rad(negative,max: max)
+        let neurad:Double=anz2rad(neutral,max: max)
         
         Debug.print("DonatView::drawRect max=\(max) posrad=\(posrad) negrad=\(negrad) neurad=\(neurad) borderRadius=\(borderRadius)  outerRadius=\(outerRadius)  innerRadius=\(innerRadius)")
         
         let centerPoint=CGPoint(x: frame.width/2.0, y: frame.height/2.0)
-        let startPoint=(x: CGFloat(centerPoint.x + CGFloat(innerRadius + ( outerRadius - innerRadius ) / 2.0)), y: centerPoint.y)
-        let context:CGContext = UIGraphicsGetCurrentContext()
-        let linewidth=outerRadius-innerRadius
-        let radius=innerRadius+linewidth/2.0
+      //  let startPoint=(x: CGFloat(centerPoint.x + CGFloat(innerRadius + ( outerRadius - innerRadius ) / 2.0)), y: centerPoint.y)
+        let context:CGContext? = UIGraphicsGetCurrentContext()
+        let linewidth:CGFloat=outerRadius-innerRadius
+        let radius:CGFloat=innerRadius+linewidth/2.0
         
-        CGContextSetLineWidth(context,CGFloat(linewidth))
+        CGContextSetLineWidth(context,linewidth)
         var c:CGColor=Colors.transparent.CGColor
         if(positive > 0)
         {
@@ -100,8 +99,8 @@ class DonatView: UIView {
         
         
         CGContextBeginPath(context)
-        CGContextAddArc(context, centerPoint.x, centerPoint.y, CGFloat(radius), 0, CGFloat(posrad), 0)
-        CGContextDrawPath(context,CGPathDrawingMode(2))
+        CGContextAddArc(context, centerPoint.x, centerPoint.y, radius, 0, CGFloat(posrad), 0)
+        CGContextDrawPath(context,CGPathDrawingMode(rawValue: 2)!)
         }
         if(negative > 0 )
         {
@@ -113,8 +112,8 @@ class DonatView: UIView {
         
         
         CGContextBeginPath(context)
-        CGContextAddArc(context, centerPoint.x, centerPoint.y, CGFloat(radius), CGFloat(posrad), CGFloat(posrad+negrad), 0)
-        CGContextDrawPath(context,CGPathDrawingMode(2))
+        CGContextAddArc(context, centerPoint.x, centerPoint.y, radius, CGFloat(posrad), CGFloat(posrad+negrad), 0)
+        CGContextDrawPath(context,CGPathDrawingMode(rawValue: 2)!)
         }
         
         if(neutral > 0)
@@ -127,8 +126,8 @@ class DonatView: UIView {
         
         
         CGContextBeginPath(context)
-        CGContextAddArc(context, centerPoint.x, centerPoint.y, CGFloat(radius), CGFloat(posrad+negrad), CGFloat(posrad+negrad+neurad), 0)
-        CGContextDrawPath(context,CGPathDrawingMode(2))
+        CGContextAddArc(context, centerPoint.x, centerPoint.y, radius, CGFloat(posrad+negrad), CGFloat(posrad+negrad+neurad), 0)
+        CGContextDrawPath(context,CGPathDrawingMode(rawValue: 2)!)
         }
         
         c=Colors.sentimentBorderColor.CGColor
@@ -142,8 +141,8 @@ class DonatView: UIView {
         
         
         CGContextBeginPath(context)
-        CGContextAddArc(context, centerPoint.x, centerPoint.y, CGFloat(borderRadius), CGFloat(0), CGFloat(2 * M_PI), 0)
-        CGContextDrawPath(context,CGPathDrawingMode(2))
+        CGContextAddArc(context, centerPoint.x, centerPoint.y, borderRadius, CGFloat(0), CGFloat(2 * M_PI), 0)
+        CGContextDrawPath(context,CGPathDrawingMode(rawValue: 2)!)
             /*
             var arc = CGPathCreateMutable();
             CGPathMoveToPoint(arc, nil,startPoint.x, startPoint.y);

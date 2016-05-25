@@ -16,7 +16,7 @@ struct Debug
          {
             NSOperationQueue.mainQueue().addOperationWithBlock {
                 
-                println(str)
+                print(str)
             }
             
         }

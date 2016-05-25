@@ -20,7 +20,7 @@ class KeywordFilter: BasicNetwork {
     {
         
     
-        var addfilter:String="CUSTOMER eq '"+settings.getCustomer()!+"'"
+        let addfilter:String="CUSTOMER eq '"+settings.getCustomer()!+"'"
         super.getData("",addfilter:addfilter,top:"",orderby: "",service: "FILTER_KEYWORDS")
     }
     
@@ -29,21 +29,24 @@ class KeywordFilter: BasicNetwork {
         Debug.print("KeywordFilter::refresh")
         super.refresh()
         data=[]
-        if(rawdata? != nil)
+        if(rawdata != nil)
         {
             
-            var l=rawdata!.count
+            let l=rawdata!.count
             Debug.print("Have \(l) datasets")
-            for var i=0; i<l; i++
+            if(l > 0 )
+            {
+            for i in 0..<l
             {
                 Debug.print("Item \(i)")
-                var item=rawdata![i] as? NSDictionary
+                let item=rawdata![i] as? NSDictionary
                 Debug.print("KeywordData::refresh::item \(item)")
-                if(item? != nil)
+                if(item != nil)
                 {
-                    var name=item!["KEYWORD"] as String;
+                    let name=item!["KEYWORD"] as! String;
                     data!.append(BasicFilter(name: name,desc: name))
                 }
+            }
             }
             Debug.print("ChannelData::refresh::data = \(data)")
         }

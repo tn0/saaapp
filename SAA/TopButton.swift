@@ -56,8 +56,8 @@ class TopButton: UIButton {
         }
     }
     
-    override init() {
-        var f=CGRect()
+     init() {
+        let f=CGRect()
         super.init(frame: f)
         setTitleColor(Colors.topButtonSelectedTitleColor, forState: UIControlState.Selected)
         setTitleColor(Colors.topButtonDisabeledTitleColor, forState: UIControlState.Disabled)

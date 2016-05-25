@@ -26,7 +26,7 @@ class ChannelData :BasicNetwork
         for o in data!
         {
             Debug.print("o \(o)")
-            var item:ChannelModel=o as ChannelModel
+            let item:ChannelModel=o as! ChannelModel
             Debug.print("item \(item)")
             sum = sum + item.messages
             Debug.print("sum \(sum)")
@@ -54,32 +54,35 @@ class ChannelData :BasicNetwork
         Debug.print("ChannelData::refresh")
         super.refresh()
         data=[]
-        if(rawdata? != nil)
+        if(rawdata != nil)
         {
             
-            var l=rawdata!.count
+            let l=rawdata!.count
             Debug.print("Have \(l) datasets")
-            for var i=0; i<l; i++
+            if l > 0
+            {
+            for i in 0...l-1
             {
                 Debug.print("Item \(i)")
-                    var item=rawdata![i] as? NSDictionary
+                    let item=rawdata![i] as? NSDictionary
                     Debug.print("ChannelData::refresh::item \(item)")
-                if(item? != nil)
+                if(item != nil)
                 {
-                    var name=item!["name"] as String;
-                    var c=item!["COUNT"] as? NSNumber
+                    let name=item!["name"] as! String;
+                    let c=item!["COUNT"] as? NSNumber
                     dump(c)
                     
-                    if( c? != nil)
+                    if( c != nil)
                     {
-                    var count:Int64 = c!.longLongValue//NSNumber(c).longLongValue
+                    let count:Int64 = c!.longLongValue//NSNumber(c).longLongValue
                         Debug.print("Name :"+name+" count \(count)")
-                    var x=ChannelModel(name: name, messages: count)
+                    let x=ChannelModel(name: name, messages: count)
                         
                     data!.append(x)
                 
                     }
                 }
+            }
             }
             Debug.print("ChannelData::refresh::data = \(data)")
         }

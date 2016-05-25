@@ -13,16 +13,15 @@ class BasicNetwork
     var delegate:NewDataDelegate?
     var settings:Settings
     var filter:Filter
-    var data:Array<AnyObject>?
+    var data:[AnyObject]?
     var rawdata:NSArray?
     var connections:Int=0
     
     
     
-    private struct Constants {
-        
+    private struct Constants
+    {
         static let batchSize = 128
-        
     }
     
     
@@ -30,9 +29,6 @@ class BasicNetwork
     {
         settings=Settings()
         self.filter=filter
-        
-        
-        
     }
     
     func getData()
@@ -47,7 +43,7 @@ class BasicNetwork
         if(service == "KEYWORDS" || service == "CHANNELS" || service == "SENTIMENT")
         {
             var parameters:String=""
-            var d="domain='"+settings.getDomain()!+"'"
+            let d="domain='"+settings.getDomain()!+"'"
             var k=""
             if(!filter.keywords.freetext.isEmpty  && filter.keywords.freetext_used)
             {
@@ -81,8 +77,8 @@ class BasicNetwork
             
             
             //filter zeitraum
-            var date_from="from_date=datetime'"+filter.zeitraum.dbbegin+"'"
-            var date_to="to_date=datetime'"+filter.zeitraum.dbend+"'"
+            let date_from="from_date=datetime'"+filter.zeitraum.dbbegin+"'"
+            let date_to="to_date=datetime'"+filter.zeitraum.dbend+"'"
             
             var date_use=""
             if(filter.zeitraum.useFilter)
@@ -209,25 +205,25 @@ class BasicNetwork
     
     func taskComplete(data:NSData?,response:NSURLResponse?,error:NSError?)
     {
-       // objc_sync_enter(connections)
-        connections--
+        // objc_sync_enter(connections)
+        connections -= 1
         if(connections == 0)
         {
             UIApplication.sharedApplication().networkActivityIndicatorVisible=false
         }
-       // objc_sync_exit(connections)
+        // objc_sync_exit(connections)
         
         
-        if(response? != nil)
+        if(response != nil)
         {
             Debug.print("taskComplete::request "+response!.debugDescription)
-            var httpresponse = response as? NSHTTPURLResponse
+            let httpresponse = response as? NSHTTPURLResponse
             
             if(httpresponse != nil)
             {
                 if (httpresponse!.statusCode > 400 )
                 {
-                    if(delegate? == nil)
+                    if(delegate == nil)
                     {
                         fatalError("Fehler Response Code ")
                     }
@@ -241,29 +237,28 @@ class BasicNetwork
             }
             
         }
-        if(error? != nil)
+        if(error != nil)
         {
             Debug.print("taskComplete::error "+error!.debugDescription)
-            if(delegate? == nil)
+            if(delegate == nil)
             {
                 fatalError("Fehler ")
             }
             else
             {
-                Debug.print("task \(task?.state.toRaw())  canceling \(NSURLSessionTaskState.Canceling.toRaw()))  error \(error!.code)")
+                Debug.print("task \(task?.state.rawValue)  canceling \(NSURLSessionTaskState.Canceling.rawValue))  error \(error!.code)")
                 if( error!.code != -999 )
                 {
-                
                   delegate?.errorByLoading(self, msg: "\(error!.localizedDescription)")
                 }
             }
             return
         }
 
-            if( data? == nil)
+        if( data == nil)
         {
-            println("Error connecting: \(error)")
-            if(delegate? == nil)
+            print("Error connecting: \(error)")
+            if(delegate == nil)
             {
                 fatalError("Couldn't create connection to server.")
             }
@@ -274,52 +269,58 @@ class BasicNetwork
             return
         }
         else
-            {
-                Debug.print("taskComplete::data "+data!.debugDescription)
+        {
+            Debug.print("taskComplete::data "+data!.debugDescription)
         }
         
         
         
-        var anyError: NSError?
-        jsonDictionary = NSJSONSerialization.JSONObjectWithData(data!, options: nil, error: &anyError) as NSDictionary?
-        
-        if( jsonDictionary? == nil )
+       // var anyError: NSErr
+    
+        do
         {
-            println("Error creating JSON dictionary: \(anyError)")
-            if(delegate? == nil)
+            jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? NSDictionary
+        }
+        catch let error as NSError {
+            Debug.print("taskComplete::json::error "+error.description)
+        } catch {
+            Debug.print("taskComplete::json unkown error ")
+        }
+        if( jsonDictionary == nil )
             {
-                fatalError("Couldn't create JSON dicitonary")
+                if(delegate == nil)
+                {
+                    fatalError("Couldn't create JSON dicitonary")
+                }
+                else
+                {
+                    delegate?.errorByLoading(self, msg: "Kann die Daten nicht interpretieren!")
+                }
+                return
             }
             else
             {
-                delegate?.errorByLoading(self, msg: "Kann die Daten nicht interpretieren!")
+                Debug.print("taskComplete::json "+jsonDictionary!.debugDescription)
             }
-            return
-        }
-        else
-        {
-        Debug.print("taskComplete::json "+jsonDictionary!.debugDescription)
-        }
             // Bounce back to the main queue to reload the table view and reenable the fetch button.
         
-        NSOperationQueue.mainQueue().addOperationWithBlock {
+            NSOperationQueue.mainQueue().addOperationWithBlock {
             
             self.updateData()
-            
         }
+        
     }
     
     func refresh()
     {
-        var d = jsonDictionary!["d"] as NSDictionary?
+        let d = jsonDictionary!["d"] as! NSDictionary?
         
-        if(d? != nil)
+        if(d != nil)
         {
             
         Debug.print("BasicNetwork::refresh Type of d")
             dump(d)
-            rawdata = d!["results"] as NSArray?
-            
+            rawdata = d!["results"] as! NSArray?
         }
         
     }
@@ -336,25 +337,25 @@ class BasicNetwork
     func getData(select:String,addfilter:String,top:String,orderby:String,service:String)
     {
         Debug.print("getData select \(select) addfilter \(addfilter) top \(top) orderby \(orderby) service \(service)")
-        var url=makeURL(select,addfilter: addfilter,top: top,orderby: orderby,service: service)
-        let jsonURL = NSURL.URLWithString(url)
+        let url=makeURL(select,addfilter: addfilter,top: top,orderby: orderby,service: service)
+        let jsonURL = NSURL(string: url)
         let sessionConfiguration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         let userPasswordString = settings.getLogin()!+":"+settings.getPassword()!
         let userPasswordData = userPasswordString.dataUsingEncoding(NSUTF8StringEncoding)
         Debug.print("PasswordData : "+userPasswordString)
-        let base64EncodedCredential = userPasswordData!.base64EncodedStringWithOptions(nil)
+        let base64EncodedCredential = userPasswordData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.EncodingEndLineWithCarriageReturn)
         let authString = "Basic \(base64EncodedCredential)"
         sessionConfiguration.HTTPAdditionalHeaders = ["Authorization" : authString]
         let session = NSURLSession(configuration: sessionConfiguration)
-        if(task? != nil && ( task?.state == NSURLSessionTaskState.Running || task?.state == NSURLSessionTaskState.Suspended) )
+        if(task != nil && ( task?.state == NSURLSessionTaskState.Running || task?.state == NSURLSessionTaskState.Suspended) )
         {
             task!.cancel()
         }
-        task = session.dataTaskWithURL(jsonURL, completionHandler: taskComplete )
+        task = session.dataTaskWithURL(jsonURL!, completionHandler: taskComplete )
         
         
        // objc_sync_enter(connections)
-        connections++
+        connections += 1
         if(connections > 0)
         {
             UIApplication.sharedApplication().networkActivityIndicatorVisible=true

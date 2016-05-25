@@ -19,9 +19,9 @@ class ChannelFilter: BasicNetwork {
     override func getData()
     {
         
-        
-        var addfilter:String="" //"CUSTOMER eq '"+settings.getCustomer()!+"'"
-        
+        //ToDo: Customer abfragen?
+        //var addfilter:String="" //"CUSTOMER eq '"+settings.getCustomer()!+"'"
+        let addfilter:String="";
         super.getData("",addfilter:addfilter,top:"",orderby: "",service: "FILTER_CHANNELS")
     }
     
@@ -30,22 +30,25 @@ class ChannelFilter: BasicNetwork {
         Debug.print("ChannelFilter::refresh")
         super.refresh()
         data=[]
-        if(rawdata? != nil)
+        if(rawdata != nil)
         {
             
-            var l=rawdata!.count
+            let l=rawdata!.count
             Debug.print("Have \(l) datasets")
-            for var i=0; i<l; i++
+            if( l > 0 )
+            {
+            for i in 0...l-1
             {
                 Debug.print("Item \(i)")
-                var item=rawdata![i] as? NSDictionary
+                let item=rawdata![i] as? NSDictionary
                 Debug.print("KeywordData::refresh::item \(item)")
-                if(item? != nil)
+                if(item != nil)
                 {
-                    var name=item!["name"] as String;
-                    var sn_id=item!["sn_id"] as String;
+                    let name=item!["name"] as! String;
+                    let sn_id=item!["sn_id"] as! String;
                     data!.append(BasicFilter(name: name,desc: sn_id))
                 }
+            }
             }
             Debug.print("ChannelData::refresh::data = \(data)")
         }

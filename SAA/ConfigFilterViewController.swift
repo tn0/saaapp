@@ -21,35 +21,29 @@ class ConfigFilterViewController: BaseViewController {
     var keywordsButton:MenuButton;
     
     var curController:UIViewController?
-    var curConstraints=[]
+    
     
     init(pane:Int,filter :Filter){
         self.pane=pane
         self.filter=filter
         button=UIButton()
-        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        button.translatesAutoresizingMaskIntoConstraints=false
         button.setTitle("OK", forState:UIControlState.Normal)
         button.backgroundColor=Colors.FilterOKButtonBackgroundColor
         button.tintColor=UIColor.lightGrayColor()
         
         zeitraumButton=MenuButton(frame: CGRect())
-        zeitraumButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        zeitraumButton.translatesAutoresizingMaskIntoConstraints=false
         zeitraumButton.setTitle("Zeitraum", forState:UIControlState.Normal)
         
         canalsButton=MenuButton(frame: CGRect())
-        canalsButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        canalsButton.translatesAutoresizingMaskIntoConstraints=false
         canalsButton.setTitle("Kanal", forState:UIControlState.Normal)
         
         keywordsButton=MenuButton(frame: CGRect())
-        keywordsButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        keywordsButton.translatesAutoresizingMaskIntoConstraints=false
         keywordsButton.setTitle("Schlüsselworte", forState:UIControlState.Normal)
-        
-        
-        
-        
-        
-        
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -58,11 +52,11 @@ class ConfigFilterViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        button.addTarget(self, action: "tappedButton:", forControlEvents: UIControlEvents.TouchDown)
-        zeitraumButton.addTarget(self, action: "zeitraum:",  forControlEvents: UIControlEvents.TouchDown)
-        canalsButton.addTarget(self, action: "canals:",  forControlEvents: UIControlEvents.TouchDown)
-        keywordsButton.addTarget(self, action: "keywords:",  forControlEvents: UIControlEvents.TouchDown)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        button.addTarget(self, action: #selector(ConfigFilterViewController.tappedButton(_:)),  forControlEvents: UIControlEvents.TouchDown)
+        zeitraumButton.addTarget(self, action: #selector(ConfigFilterViewController.zeitraum(_:)),  forControlEvents: UIControlEvents.TouchDown)
+        canalsButton.addTarget(self, action: #selector(ConfigFilterViewController.canals(_:)),  forControlEvents: UIControlEvents.TouchDown)
+        keywordsButton.addTarget(self, action: #selector(ConfigFilterViewController.keywords(_:)),  forControlEvents: UIControlEvents.TouchDown)
+        view.translatesAutoresizingMaskIntoConstraints=false
         view.backgroundColor=Colors.configPaneBackgroundColor
         view.addSubview(button)
         view.addSubview(zeitraumButton)
@@ -124,18 +118,20 @@ class ConfigFilterViewController: BaseViewController {
 
     }
     
+    var curConstraints:[NSLayoutConstraint]?;
     func removeController()
     {
-        if(curController? != nil)
+        if(curController != nil)
         {
-            view.removeConstraints(curConstraints)
+            view.removeConstraints(curConstraints!)
             removeChild(curController!)
         }
     }
     
+    
     func addController()
     {
-        if(curController? != nil)
+        if(curController != nil)
         {
             addChild(curController!)
             curConstraints=[
@@ -144,7 +140,7 @@ class ConfigFilterViewController: BaseViewController {
                 NSLayoutConstraint(item: curController!.view,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 20),
                 NSLayoutConstraint(item: curController!.view,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -20),
             ]
-            view.addConstraints(curConstraints)
+            view.addConstraints(curConstraints!)
         }
     }
     
@@ -162,19 +158,29 @@ class ConfigFilterViewController: BaseViewController {
     func setConstraints()
     {
         Debug.print("\(self.description)::setConstraints")
-    var constraints = [
+        var  constraints:[NSLayoutConstraint] = [
         NSLayoutConstraint(item: button,attribute: NSLayoutAttribute.Bottom,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Bottom,multiplier: 1,constant: -20),
         NSLayoutConstraint(item: button,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 20),
         NSLayoutConstraint(item: button,attribute: NSLayoutAttribute.Right,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: -20),
+        ]
+        view.addConstraints(constraints)
         
+        constraints = [
         NSLayoutConstraint(item: zeitraumButton,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
         NSLayoutConstraint(item: zeitraumButton,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0),
         NSLayoutConstraint(item: zeitraumButton,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: -10),
+        ]
+        view.addConstraints(constraints)
         
+        constraints = [
         NSLayoutConstraint(item: canalsButton,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
         NSLayoutConstraint(item: canalsButton,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: zeitraumButton,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
         NSLayoutConstraint(item: canalsButton,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant: -30),
         
+        ]
+        view.addConstraints(constraints)
+        
+        constraints = [
         NSLayoutConstraint(item: keywordsButton,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),
         NSLayoutConstraint(item: keywordsButton,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: canalsButton,attribute: NSLayoutAttribute.Right,multiplier: 1,constant: 0),
         NSLayoutConstraint(item: keywordsButton,attribute: NSLayoutAttribute.Width,relatedBy: NSLayoutRelation.Equal,toItem: view,attribute: NSLayoutAttribute.Width,multiplier: 1.0/3.0,constant:+40),

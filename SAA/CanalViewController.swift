@@ -11,13 +11,15 @@ import UIKit
 class CanalViewController: LeftFilterViewController {
 
     var channels:UIView
-    var labelArray=[]
+    //var labelArray=[]
     var filter:Filter
+    
     init(filter:Filter) {
+        Debug.print("CanalViewController::init")
         channels=UIView()
         self.filter=filter
-        channels.setTranslatesAutoresizingMaskIntoConstraints(false)
-        super.init(nibName: nil, bundle: nil)
+        channels.translatesAutoresizingMaskIntoConstraints=false
+        super.init()
         button.text="< Kanal"
         pane = 1
     }
@@ -44,7 +46,7 @@ class CanalViewController: LeftFilterViewController {
         {
             view.removeFromSuperview()
         }
-        var constraints=channels.constraints()
+        let constraints=channels.constraints
         channels.removeConstraints(constraints)
         var i=0
         var constr1:NSLayoutConstraint;
@@ -53,8 +55,8 @@ class CanalViewController: LeftFilterViewController {
         {
             if(c.use)
             {
-                var label=UILabel()
-                label.setTranslatesAutoresizingMaskIntoConstraints(false)
+                let label=UILabel()
+                label.translatesAutoresizingMaskIntoConstraints=false
                 label.text=c.name
                 label.textColor=Colors.zeitraumLabelTextColor
                 channels.addSubview(label)
@@ -68,17 +70,17 @@ class CanalViewController: LeftFilterViewController {
                 {
                     constr1=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: oldLabel!,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 20)
                 }
-                var constr2=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0)
+                let constr2=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0)
                 channels.addConstraint(constr1)
                 channels.addConstraint(constr2)
                 oldLabel=label;
-                i++
+                i += 1
             }
         }
         if(i==0)
         {
-            var label=UILabel()
-            label.setTranslatesAutoresizingMaskIntoConstraints(false)
+            let label=UILabel()
+            label.translatesAutoresizingMaskIntoConstraints=false
             label.text="Alle Kanäle"
             label.textColor=Colors.zeitraumLabelTextColor
             channels.addSubview(label)
@@ -86,7 +88,7 @@ class CanalViewController: LeftFilterViewController {
             constr1=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0)
                 
             
-            var constr2=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0)
+            let constr2=NSLayoutConstraint(item:label,attribute: NSLayoutAttribute.Left,relatedBy: NSLayoutRelation.Equal,toItem: channels,attribute: NSLayoutAttribute.Left,multiplier: 1,constant: 0)
             channels.addConstraint(constr1)
             channels.addConstraint(constr2)
         }
@@ -102,7 +104,7 @@ class CanalViewController: LeftFilterViewController {
     override func setConstraints() {
         
         Debug.print("setConstraints in KeywordsController")
-        var constraints = [
+        let constraints:[NSLayoutConstraint] = [
             
             
             NSLayoutConstraint(item:channels,attribute: NSLayoutAttribute.Top,relatedBy: NSLayoutRelation.Equal,toItem: content,attribute: NSLayoutAttribute.Top,multiplier: 1,constant: 0),

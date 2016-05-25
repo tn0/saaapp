@@ -14,65 +14,65 @@ import Foundation
 import UIKit
 
 struct Colors {
-    static var Color1:UIColor=Colors.rgbToUiColor(0xe0e0e0,alpha:1.0)
-    static var transparent:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 0)
+    static let Color1:UIColor=Colors.rgbToUiColor(0xe0e0e0,alpha:1.0)
+    static let transparent:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 0)
     
-    static var navBarBackgroundColor=Color1
-    static var zeitraumBackgroundColor=transparent
-    static var backgroundColor=UIColor.whiteColor()
-    static var leftBackgroundColor=transparent
-    static var topBackgroundColor=transparent
-    static var grafikBackgroundColor=transparent
-    static var FilterOKButtonBackgroundColor=Colors.rgbToUiColor(0x5985a8, alpha: 1.0)
-    static var FilterOKButtonTextColor=UIColor.whiteColor()
-    static var statusBackgroundColor=UIColor.yellowColor()
-    static var configMenuBorderColor=UIColor.lightGrayColor()
+    static let navBarBackgroundColor:UIColor=Color1
+    static let zeitraumBackgroundColor:UIColor=transparent
+    static let backgroundColor:UIColor=UIColor.whiteColor()
+    static let leftBackgroundColor:UIColor=transparent
+    static let topBackgroundColor:UIColor=transparent
+    static let grafikBackgroundColor:UIColor=transparent
+    static let FilterOKButtonBackgroundColor:UIColor=Colors.rgbToUiColor(0x5985a8, alpha: 1.0)
+    static let FilterOKButtonTextColor:UIColor=UIColor.whiteColor()
+    static let statusBackgroundColor:UIColor=UIColor.yellowColor()
+    static let configMenuBorderColor:UIColor=UIColor.lightGrayColor()
     
-    static var calendarButtonDisableBorderColor=Colors.rgbToUiColor(0xffffff, alpha: 0)
-    static var calendarButtonInactiveBorderColor=UIColor.lightGrayColor()
-    static var calendarButtonActiveBorderColor=UIColor.whiteColor()
+    static let calendarButtonDisableBorderColor:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 0)
+    static let calendarButtonInactiveBorderColor:UIColor=UIColor.lightGrayColor()
+    static let calendarButtonActiveBorderColor:UIColor=UIColor.whiteColor()
     
-    static var calendarButtonDisableBackgroundColor=Colors.rgbToUiColor(0xffffff, alpha: 0)
-    static var calendarButtonInactiveBackgroundColor=Colors.rgbToUiColor(0x999999, alpha: 0)
-    static var calendarButtonActiveBackgroundColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
+    static let calendarButtonDisableBackgroundColor:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 0)
+    static let calendarButtonInactiveBackgroundColor:UIColor=Colors.rgbToUiColor(0x999999, alpha: 0)
+    static let calendarButtonActiveBackgroundColor:UIColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
     
-    static var calendarButtonDisableTintColor=UIColor.darkGrayColor()
-    static var calendarButtonInactiveTintColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
-    static var calendarButtonActiveTintColor=UIColor.whiteColor()
+    static let calendarButtonDisableTintColor:UIColor=UIColor.darkGrayColor()
+    static let calendarButtonInactiveTintColor:UIColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
+    static let calendarButtonActiveTintColor:UIColor=UIColor.whiteColor()
     
-    static var calendarMonthColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
-    static var calendarYearColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
-    static var configLabelTextColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
-    static var zeitraumConfigActiveBackgroundColor=Colors.rgbToUiColor(0x3f3f41, alpha: 0)
-    static var zeitraumConfigInactiveBackgroundColor=Colors.rgbToUiColor(0x999999, alpha: 0)
-    static var zeitraumConfigActiveTitleColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
-    static var zeitraumConfigInactiveTitleColor=Colors.rgbToUiColor(0x999999, alpha: 1)
-    static var checkboxSelectedColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
-    static var checkboxUnselectedColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
-    static var leftMenuBorderColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
-    static var leftMenuActiveTextColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
-    static var leftMenuInactiveTextColor=Colors.rgbToUiColor(0x666666, alpha: 1)
-    static var configPaneBackgroundColor=Colors.rgbToUiColor(0x404040, alpha: 1)
+    static let calendarMonthColor:UIColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
+    static let calendarYearColor:UIColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
+    static let configLabelTextColor:UIColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
+    static let zeitraumConfigActiveBackgroundColor:UIColor=Colors.rgbToUiColor(0x3f3f41, alpha: 0)
+    static let zeitraumConfigInactiveBackgroundColor:UIColor=Colors.rgbToUiColor(0x999999, alpha: 0)
+    static let zeitraumConfigActiveTitleColor:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
+    static let zeitraumConfigInactiveTitleColor:UIColor=Colors.rgbToUiColor(0x999999, alpha: 1)
+    static let checkboxSelectedColor:UIColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
+    static let checkboxUnselectedColor:UIColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
+    static let leftMenuBorderColor:UIColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
+    static let leftMenuActiveTextColor:UIColor=Colors.rgbToUiColor(0xcccccc, alpha: 1)
+    static let leftMenuInactiveTextColor:UIColor=Colors.rgbToUiColor(0x666666, alpha: 1)
+    static let configPaneBackgroundColor:UIColor=Colors.rgbToUiColor(0x404040, alpha: 1)
     
-    static var zeitraumLabelTextColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
-    static var calloutButtonTextColor=Colors.rgbToUiColor(0x666666, alpha: 1)
-    static var channelGraficBarColor=Colors.rgbToUiColor(0x5985a8, alpha: 1.0)
+    static let zeitraumLabelTextColor:UIColor=Colors.rgbToUiColor(0xff6821, alpha: 1)
+    static let calloutButtonTextColor:UIColor=Colors.rgbToUiColor(0x666666, alpha: 1)
+    static let channelGraficBarColor:UIColor=Colors.rgbToUiColor(0x5985a8, alpha: 1.0)
     
-    static var sentimentPositiveGrafikColor=Colors.rgbToUiColor(0x81ac64, alpha: 1)
-    static var sentimentNegativeGrafikColor=Colors.rgbToUiColor(0xc95756, alpha: 1)
-    static var sentimentNeutralGrafikColor=Colors.rgbToUiColor(0xe6e6e6, alpha: 1)
-    static var sentimentBorderColor=Colors.rgbToUiColor(0xcbcbcb, alpha: 1)
+    static let sentimentPositiveGrafikColor:UIColor=Colors.rgbToUiColor(0x81ac64, alpha: 1)
+    static let sentimentNegativeGrafikColor:UIColor=Colors.rgbToUiColor(0xc95756, alpha: 1)
+    static let sentimentNeutralGrafikColor:UIColor=Colors.rgbToUiColor(0xe6e6e6, alpha: 1)
+    static let sentimentBorderColor:UIColor=Colors.rgbToUiColor(0xcbcbcb, alpha: 1)
     
     
-    static var grafikBorderColor=Colors.rgbToUiColor(0xcbcbcb, alpha: 1)
-    static var grafikIndicatorColor=Colors.rgbToUiColor(0xd86024, alpha: 1)
+    static let grafikBorderColor:UIColor=Colors.rgbToUiColor(0xcbcbcb, alpha: 1)
+    static let grafikIndicatorColor:UIColor=Colors.rgbToUiColor(0xd86024, alpha: 1)
     
-    static var topButtonSelectedBackgroundColor=Colors.rgbToUiColor(0x779ab8, alpha: 1)
-    static var topButtonBackgroundColor=Colors.rgbToUiColor(0x779ab8, alpha: 1)
-    static var topButtonDisabeledTitleColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
-    static var topButtonSelectedTitleColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
-    static var topButtonTitleColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
-    static var topButtonDisabeledBackgroundColor=Colors.rgbToUiColor(0xe6e6e6, alpha: 1)
+    static let topButtonSelectedBackgroundColor:UIColor=Colors.rgbToUiColor(0x779ab8, alpha: 1)
+    static let topButtonBackgroundColor:UIColor=Colors.rgbToUiColor(0x779ab8, alpha: 1)
+    static let topButtonDisabeledTitleColor:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
+    static let topButtonSelectedTitleColor:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
+    static let topButtonTitleColor:UIColor=Colors.rgbToUiColor(0xffffff, alpha: 1)
+    static let topButtonDisabeledBackgroundColor:UIColor=Colors.rgbToUiColor(0xe6e6e6, alpha: 1)
     
     static func rgbToUiColor(rgb:Int,alpha:Float) -> UIColor {
         let r = Float( rgb >> 16 & 0xFF )/255.0;
