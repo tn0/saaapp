@@ -52,7 +52,7 @@ class KeywordController: LeftFilterViewController {
         var i=0
         var constr1:NSLayoutConstraint;
         var oldLabel:UILabel?
-        if(filter.keywords.freetext != "")
+        if(filter.keywords.freetext != "" && filter.keywords._freetext_used)
         {
             let label=UILabel()
             label.translatesAutoresizingMaskIntoConstraints=false
