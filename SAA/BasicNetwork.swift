@@ -223,14 +223,20 @@ class BasicNetwork
             {
                 if (httpresponse!.statusCode > 400 )
                 {
+                    var message:String="";
+                    if (httpresponse!.statusCode == 401)
+                    {
+                        message=" Passwort ist falsch";
+                    }
                     if(delegate == nil)
                     {
-                        fatalError("Fehler Response Code ")
+                        fatalError("Fehler Response Code "+httpresponse!.statusCode.description+message )
                     }
                     else
                     {
-                        Debug.print("Fehler Response Code \(httpresponse!.statusCode)")
-                        delegate?.errorByLoading(self, msg: "\(error!.localizedDescription)")
+                        
+                        Debug.print("Fehler Response Code \(httpresponse!.debugDescription)")
+                        delegate?.errorByLoading(self, msg: "Connection Aborded with code \(httpresponse!.statusCode)")
                     }
                     return
                 }
@@ -257,7 +263,7 @@ class BasicNetwork
 
         if( data == nil)
         {
-            print("Error connecting: \(error)")
+            print("Error connecting: ")
             if(delegate == nil)
             {
                 fatalError("Couldn't create connection to server.")
