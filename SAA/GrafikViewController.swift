@@ -17,6 +17,7 @@ class GrafikViewController: BaseViewController {
     var channelIndicator:GrafikIndicator
     var sentimentIndicator:GrafikIndicator
     var keywordsIndicator:GrafikIndicator
+    var autoreload:NSTimer=NSTimer();
     
     var delegate:ShowDetailsDelegate?
     
@@ -28,13 +29,17 @@ class GrafikViewController: BaseViewController {
         keywords=KeywordTableViewController(filter:filter)
         channelIndicator=GrafikIndicator()
         sentimentIndicator=GrafikIndicator()
+        
         keywordsIndicator=GrafikIndicator()
+        
         super.init()
+        autoreload=NSTimer.scheduledTimerWithTimeInterval(10,target: self, selector: #selector(GrafikViewController.delayedGetData(_:)),userInfo: nil, repeats: true)
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     
     override func viewDidLoad() {
@@ -51,6 +56,7 @@ class GrafikViewController: BaseViewController {
         view.addSubview(keywordsIndicator)
         setConstraints()
         getData()
+        
         
         
         
