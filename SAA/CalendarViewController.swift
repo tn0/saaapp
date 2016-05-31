@@ -82,7 +82,7 @@ class CalendarViewController: BaseViewController {
     ]
     
     var _date:NSDate;
-    var _calendar:NSCalendar=NSCalendar(calendarIdentifier: NSGregorianCalendar)!
+    var _calendar:NSCalendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
     var _month:Int
     var _year:Int
     var _day:Int
@@ -136,7 +136,7 @@ class CalendarViewController: BaseViewController {
       //  yearFormatter.locale=NSLocale.currentLocale()
         yearFormatter.dateFormat="yyyy"
         
-        _calendar=NSCalendar(calendarIdentifier: NSGregorianCalendar)!
+        _calendar=NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         back=UIButton()
         back.setTitle("<", forState: UIControlState.Normal)
         back.translatesAutoresizingMaskIntoConstraints=false
