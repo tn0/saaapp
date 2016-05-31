@@ -8,7 +8,8 @@
 
 import UIKit
 
-class BaseGraficViewController: BaseViewController, NewDataDelegate {
+class BaseGraficViewController: BaseViewController, NewDataDelegate
+{
 //class BaseGraficViewController: BaseViewController {
     
     var dataSource:BasicNetwork?
@@ -18,7 +19,8 @@ class BaseGraficViewController: BaseViewController, NewDataDelegate {
         super.init()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder)
+    {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -28,57 +30,32 @@ class BaseGraficViewController: BaseViewController, NewDataDelegate {
        Debug.print("\(self) please override the dataLoaded method oh BaseGraficViewController to update your grafic")
     }
     
-    func errorByLoading(sender: BasicNetwork, msg: String) {
+    func errorByLoading(sender: BasicNetwork, msg: String)
+    {
         
         Debug.print("\(self) Netzwerkfehler "+msg)
-        NSOperationQueue.mainQueue().addOperationWithBlock {
+        NSOperationQueue.mainQueue().addOperationWithBlock
+        {
             if(!Errorlock.showError)
             {
                 self.showAlert(msg)
             }
         }
-        
-        
     }
     
-    var errorAlert: UIAlertView?
-    func showAlert(msg:String){
+    func showAlert(msg:String)
+    {
+        
         Errorlock.showError=true
-        Debug.print("errorAlert \(errorAlert?.debugDescription)")
-        if(errorAlert == nil)
-        {
-        Debug.print("new errorAlert \(errorAlert?.debugDescription)")
-            errorAlert = UIAlertView()
-        Debug.print("new errorAlert \(errorAlert?.debugDescription)")
-        errorAlert!.delegate = self
-        
-        errorAlert!.title = "Fehler"
-        errorAlert!.message = msg
-        errorAlert!.addButtonWithTitle("OK")
-        
-        Debug.print("show errorAlert \(errorAlert?.debugDescription)")
-        errorAlert!.show()
+        let retry:UIAlertAction=UIAlertAction(title: "OK", style: .Default)
+        { _ in
+            NSLog("OK");
+            Errorlock.showError=false
         }
         
-    }
-    
-    func alertView(View: UIAlertView!, clickedButtonAtIndex buttonIndex: Int){
-        errorAlert=nil
-        Errorlock.showError=false
-        Debug.print("del errorAlert \(errorAlert?.debugDescription)")
-        switch buttonIndex{
-            
-        case 1:
-            NSLog("Retry");
-            break;
-        case 0:
-            NSLog("Dismiss");
-            break;
-        default:
-            NSLog("Default");
-            break;
-            //Some code here..
-            
-        }
+        let alert = UIAlertController(title: "Netzwerkfehler!", message:msg, preferredStyle: .Alert)
+        alert.addAction(retry)
+        self.presentViewController(alert, animated: true){}
+        
     }
 }
